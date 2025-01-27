@@ -1,34 +1,169 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Menu, X, Phone, Mail, Clock } from "lucide-react";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeItem, setActiveItem] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+      // Close mobile menu on scroll
+      if (isMenuOpen) setIsMenuOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMenuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
+  const navItems = [
+    { name: "Home", icon: "🏠" },
+    { name: "About Us", icon: "ℹ️" },
+    { name: "How It Works?", icon: "🔄" },
+    { name: "Testimonials", icon: "⭐" },
+    { name: "Unlock My iCloud", icon: "🔓" },
+  ];
 
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-blue-600">UnlockMyDevice</div>
-        <div className="hidden md:flex space-x-6">
-          <a href="#home" className="text-gray-800 hover:text-blue-600">Home</a>
-          <a href="#about" className="text-gray-800 hover:text-blue-600">About Us</a>
-          <a href="#how-it-works" className="text-gray-800 hover:text-blue-600">How It Works?</a>
-          <a href="#testimonials" className="text-gray-800 hover:text-blue-600">Testimonials</a>
-          <a href="#unlock" className="text-gray-800 hover:text-blue-600">Unlock My iCloud</a>
+    <div className="fixed w-full top-0 z-50">
+      {/* Top Bar with slide-down animation */}
+      <div
+        className={`bg-blue-600 text-white transform transition-all duration-300 ${
+          isScrolled ? "h-0 opacity-0" : "h-auto opacity-100"
+        }`}
+      >
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center justify-center md:justify-start space-x-6">
+              <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
+                <Phone size={16} className="animate-pulse" />
+                <a
+                  href="tel:+33756904053"
+                  className="hover:text-blue-200 transition-colors md:text-base text-xs"
+                >
+                  +33 7 56 90 40 53
+                </a>
+              </div>
+              <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
+                <Mail size={16} className="animate-pulse" />
+                <a
+                  href="mailto:icloud@deblocage-rapide.com"
+                  className="hover:text-blue-200 transition-colors text-xs md:text-base"
+                >
+                  icloud@deblocage-rapide.com
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:flex items-center justify-center md:justify-end mt-2 md:mt-0">
+              <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
+                <Clock size={16} className="animate-pulse" />
+                <span>Available 24/7</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <button className="md:hidden text-gray-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          ☰
-        </button>
       </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <a href="#home" className="block px-6 py-2 text-gray-800 hover:bg-gray-100">Home</a>
-          <a href="#about" className="block px-6 py-2 text-gray-800 hover:bg-gray-100">About Us</a>
-          <a href="#how-it-works" className="block px-6 py-2 text-gray-800 hover:bg-gray-100">How It Works?</a>
-          <a href="#testimonials" className="block px-6 py-2 text-gray-800 hover:bg-gray-100">Testimonials</a>
-          <a href="#unlock" className="block px-6 py-2 text-gray-800 hover:bg-gray-100">Unlock My iCloud</a>
+
+      {/* Main Navbar */}
+      <nav
+        className={`bg-white transition-all duration-500 ${
+          isScrolled ? "shadow-lg" : "shadow-sm"
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Animated Logo */}
+            <div className="flex-shrink-0 transform hover:scale-105 transition-transform">
+              <span
+                className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent
+                hover:from-blue-500 hover:to-blue-300 transition-all duration-300"
+              >
+                UnlockMyDevice
+              </span>
+            </div>
+
+            {/* Desktop Navigation with hover animations */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={`#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  className={`group relative text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium
+                    ${activeItem === item.name ? "text-blue-600" : ""}`}
+                  onMouseEnter={() => setActiveItem(item.name)}
+                  onMouseLeave={() => setActiveItem("")}
+                >
+                  <span className="relative z-10">{item.name}</span>
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left
+                    transition-transform duration-300 ${
+                      activeItem === item.name ? "scale-x-100" : "scale-x-0"
+                    }
+                    group-hover:scale-x-100`}
+                  />
+                </a>
+              ))}
+            </div>
+
+            {/* Animated Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-md text-gray-600 hover:text-blue-600 
+                hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X
+                  size={24}
+                  className="transform rotate-0 transition-transform duration-300"
+                />
+              ) : (
+                <Menu
+                  size={24}
+                  className="transform rotate-180 transition-transform duration-300"
+                />
+              )}
+            </button>
+          </div>
         </div>
-      )}
-    </nav>
+
+        {/* Enhanced Mobile Navigation */}
+        <div
+          className={`-ml-32 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col h-full pt-20 pb-6 px-4">
+            {navItems.map((item, index) => (
+              <a
+                key={item.name}
+                href={`#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+                className="flex items-center space-x-3 px-4 py-4 text-lg text-gray-600 hover:text-blue-600 
+                  hover:bg-blue-50 rounded-lg transition-all duration-300 transform hover:translate-x-2"
+                style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="text-2xl">{item.icon}</span>
+                <span>{item.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 }
