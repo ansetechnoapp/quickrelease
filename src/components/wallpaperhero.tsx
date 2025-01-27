@@ -1,9 +1,9 @@
 'use client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css'; // Core Swiper CSS
-import 'swiper/css/pagination'; // Pagination CSS
-import 'swiper/css/navigation'; // Navigation CSS
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const Wallpaperhero = () => {
   const images = [
@@ -14,7 +14,6 @@ const Wallpaperhero = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* Swiper for scrolling wallpaper */}
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         autoplay={{ delay: 9000, disableOnInteraction: false }}
@@ -24,6 +23,9 @@ const Wallpaperhero = () => {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
+        // Enable touch drag functionality
+        grabCursor={true}
+        draggable={true}
         className="w-full h-full"
       >
         {images.map((image, index) => (
@@ -32,12 +34,7 @@ const Wallpaperhero = () => {
               className="w-full h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${image})` }}
             />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Hero content */}
-      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
         <div className="text-center text-white">
           <h1 className="text-5xl font-bold mb-4">Welcome to My Website</h1>
           <p className="text-xl mb-8">Explore the best content on the web</p>
@@ -46,20 +43,26 @@ const Wallpaperhero = () => {
           </button>
         </div>
       </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      {/* Custom navigation buttons */}
-      <div className="swiper-button-prev z-20" id="swiper-button-prev"></div>
-      <div className="swiper-button-next z-20" id="swiper-button-next"></div>
+      
 
-      {/* Add the custom styles for navigation buttons */}
+      {/* Navigation buttons - hidden on mobile */}
+      <div className="hidden md:block">
+        <div className="swiper-button-prev z-20" id="swiper-button-prev"></div>
+        <div className="swiper-button-next z-20" id="swiper-button-next"></div>
+      </div>
+
       <style jsx>{`
         .swiper-button-next,
         .swiper-button-prev {
-          color: white; /* Change color to white */
-          background-color: rgba(0, 0, 0, 0.5); /* Add a background */
-          width: 40px; /* Increase size */
+          color: white;
+          background-color: rgba(0, 0, 0, 0.5);
+          width: 40px;
           height: 40px;
-          border-radius: 50%; /* Make them circular */
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -67,7 +70,15 @@ const Wallpaperhero = () => {
         
         .swiper-button-next::after,
         .swiper-button-prev::after {
-          font-size: 20px; /* Adjust arrow size */
+          font-size: 20px;
+        }
+
+        /* Hide navigation buttons on mobile using CSS as a fallback */
+        @media (max-width: 768px) {
+          .swiper-button-next,
+          .swiper-button-prev {
+            display: none;
+          }
         }
       `}</style>
     </div>
