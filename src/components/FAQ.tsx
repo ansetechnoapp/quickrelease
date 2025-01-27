@@ -5,7 +5,7 @@ export function FAQ() {
           answer: "Unlocking typically takes a few minutes to a few hours, depending on your device model.",
         },
         {
-          question: "Is the unlocking process secure?",
+          question: "Is  the unlocking process secure?",
           answer: "Yes, we use secure methods to ensure your data remains protected.",
         },
         {
