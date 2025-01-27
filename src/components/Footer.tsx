@@ -1,30 +1,46 @@
+"use client"; 
+import { motion } from "framer-motion";
+
 export function Footer() {
-      return (
-        <footer className="bg-gray-800 text-white py-8">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold">UnlockMyDevice</h3>
-                <p className="text-gray-400 mt-2">Your trusted solution for unlocking devices worldwide.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold">Quick Links</h3>
-                <ul className="mt-2 space-y-2">
-                  <li><a href="#home" className="hover:underline">Home</a></li>
-                  <li><a href="#about" className="hover:underline">About Us</a></li>
-                  <li><a href="#how-it-works" className="hover:underline">How It Works?</a></li>
-                  <li><a href="#testimonials" className="hover:underline">Testimonials</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold">Contact Us</h3>
-                <p className="text-gray-400 mt-2">Email: support@unlockmydevice.com</p>
-                <p className="text-gray-400">Phone: +123 456 7890</p>
-              </div>
-            </div>
-            <p className="text-center text-gray-400 mt-8">&copy; 2025 UnlockMyDevice. All rights reserved.</p>
+  return (
+    <footer className="relative bg-[url('/footer-bg.png')] bg-cover bg-center bg-no-repeat text-white py-8">
+      {/* Image animée avec Framer Motion */}
+      <motion.div 
+        initial={{ y: 0 }}
+        animate={{ y: 20 }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        className="absolute top-0 left-0 w-full h-full bg-[url('/footer-shape.jpg')] bg-contain bg-top bg-no-repeat pointer-events-none"
+      ></motion.div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-lg font-semibold">Déblocage Icloud</h3>
+            <p className="text-gray-400 mt-2">Déblocage rapide, la plateforme 100% fiable pour votre déblocage sécurisé et rapide.</p>
           </div>
-        </footer>
-      );
-    }
-    
+          <div>
+            <h3 className="text-lg font-semibold">Déblocage Rapide</h3>
+            <ul className="mt-2 space-y-2">
+              <li><a href="#home" className="hover:underline">Accueil</a></li>
+              <li><a href="#about" className="hover:underline">À Propos</a></li>
+              <li><a href="#how-it-works" className="hover:underline">Comment ça marche?</a></li>
+              <li><a href="#testimonials" className="hover:underline">Témoignages</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Latest Blog</h3>
+            <p className="text-gray-400 mt-2">Accueil</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Rejoignez nous</h3>
+            <p className="text-gray-400 mt-2">Adresse</p>
+            <p className="text-gray-400 mt-2">Email: support@unlockmydevice.com</p>
+            <p className="text-gray-400">Phone: +123 456 7890</p>
+          </div>
+        </div>
+        <p className="text-center text-gray-400 mt-8">&copy; 2025 UnlockMyDevice. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+}
