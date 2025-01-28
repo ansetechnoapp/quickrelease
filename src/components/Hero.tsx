@@ -23,7 +23,7 @@ export function Hero() {
             {/* Image Content */}
             <div className="grid place-items-center md:place-items-end">
               <img
-                src="/hero-image.png"
+                src="/about-thumb2.png"
                 alt="Device unlocking illustration"
                 className="w-full max-w-md md:max-w-lg"
               />
