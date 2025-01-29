@@ -1,5 +1,5 @@
 "use client";
-
+import Link from 'next/link';
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
 import Button from "./ui/Button";
@@ -118,8 +118,10 @@ export function Navbar() {
               <Button onClick={() => setIsMenuOpen(false)} icon={(
                <FaArrowRight className="ml-2" />
                 
-                )}>Unlock My iCloud</Button>
+                )}> <Link href="/other_page/demarrer">Unlock My iCloud</Link></Button>
             </div>
+
+           
 
             {/* Animated Mobile Menu Button */}
             <button
@@ -172,7 +174,7 @@ export function Navbar() {
                 Unlock My iCloud
               </span>
             </a> */}
-<Button onClick={() => setIsMenuOpen(false)} icon={<div>🔓</div>}>Unlock My iCloud</Button>
+            <Button onClick={() => setIsMenuOpen(false)} icon={<div>🔓</div>}> <Link href="/other_page/demarrer">Unlock My iCloud</Link></Button>
 
           </div>
         </div>

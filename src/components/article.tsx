@@ -38,10 +38,12 @@ export function ARTICLE() {
       </div>
   
       {/* Bouton (visible uniquement sur grand écran) */}
-      <button className="hidden md:block bg-[#09415E] text-white px-6 py-3 rounded-lg hover:bg-[#072E45] transition-all duration-300 ease-in-out transform hover:translate-y-[-50%] hover:translate-x-[-50%]">
+      <button className="hidden md:block bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-[#072E45] transition">
+        Plus d'articles
+      </button>
+      {/*<button className="hidden md:block bg-[#09415E] text-white px-6 py-3 rounded-lg hover:bg-[#072E45] transition-all duration-300 ease-in-out transform hover:translate-y-[-50%] hover:translate-x-[-50%]">
   Plus d'articles
-</button>
-
+</button> */}
     </div>
   
     {/* Grid des Articles */}
