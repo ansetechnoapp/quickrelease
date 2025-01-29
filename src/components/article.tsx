@@ -38,9 +38,10 @@ export function ARTICLE() {
       </div>
   
       {/* Bouton (visible uniquement sur grand écran) */}
-      <button className="hidden md:block bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-[#072E45] transition">
-        Plus d'articles
-      </button>
+      <button className="hidden md:block bg-[#09415E] text-white px-6 py-3 rounded-lg hover:bg-[#072E45] transition-all duration-300 ease-in-out transform hover:translate-y-[-50%] hover:translate-x-[-50%]">
+  Plus d'articles
+</button>
+
     </div>
   
     {/* Grid des Articles */}
@@ -56,7 +57,7 @@ export function ARTICLE() {
                   alt="Iphone"
                   width={410}
                   height={300}
-                  className="w-full h-full object-cover transition-transform duration-150 ease-in-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-150 ease-out group-hover:scale-105"
                 />
                 <div className="absolute bottom-2 left-2 w-[62px] rounded-lg h-[70px] bg-yellow-500 group-hover:bg-[#09415E] flex flex-col items-center justify-center text-white">
                   <h1 className="text-lg font-bold">{article.date}</h1>
