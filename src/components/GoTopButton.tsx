@@ -26,7 +26,7 @@ export default function GoTopButton() {
       initial={{ opacity: 0, y: "-100vh" }} // Démarre complètement hors écran (tout en haut)
       animate={{
         opacity: isVisible ? 1 : 0,
-        y: isVisible ? 0 : "-100vh", // Disparaît légèrement vers le haut
+        y: isVisible ? 0 : "-150vh", // Disparaît légèrement vers le haut
       }}
       transition={{ duration: 1, ease: "easeInOut" }}
       whileHover={{ scale: 1.1 }}
