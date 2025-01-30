@@ -7,9 +7,9 @@ import 'swiper/css/navigation';
 
 const Wallpaperhero = () => {
   const section = [
-    { title: "Debloquer iCloud sur iPhone, iPad et iPod", subtitle: "100% fiable", buttonText: "Débloquer mon iCloud ", url: 'https://cdn.futura-sciences.com/sources/images/dossier/773/01-intro-773.jpg' },
-    { title: "Obtenez votre code de déblocage en moins d'une heure", subtitle: "Le meilleur service en ligne", buttonText: "Débloquer mon iCloud ", url: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg' },
-    { title: "Profitez d'un service professionnel, sûr et fiable ", subtitle: "", buttonText: "Confidentialité", url: 'https://cdn.futura-sciences.com/sources/images/AI-creation.jpg' },
+    { title: "Debloquer iCloud sur iPhone, iPad et iPod", subtitle: "100% fiable", buttonText: "Débloquer mon iCloud ", url: '/slider-bg.png' },
+    { title: "Obtenez votre code de déblocage en moins d'une heure", subtitle: "Le meilleur service en ligne", buttonText: "Débloquer mon iCloud ", url: '/slider-bg2.png' },
+    { title: "Profitez d'un service professionnel, sûr et fiable ", subtitle: "", buttonText: "Confidentialité", url: 'slider-bg3.png' },
   ];
   return (
     <div className="relative h-screen overflow-hidden">
