@@ -109,7 +109,7 @@ export function Footer() {
             <div className="text-center md:text-left">
               <div className="w-[150px] md:w-[188px] h-[40px] md:h-[50px] mx-auto md:mx-0">
                 <Image
-                  src="/footer-logo.jpg"
+                  src="/footer-logo.png"
                   alt="Logo"
                   width={188}
                   height={50}
