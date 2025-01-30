@@ -3,7 +3,7 @@ import Image from 'next/image';
 const articles = [
   {
     id: 1,
-    title: 'Connaître l\'évolution de l\'iPhone d\'Apple depuis sa création',
+    title: 'Connaître l&rsquo;évolution de l&rsquo;iPhone d&rsquo;Apple depuis sa création',
     date: '15',
     month: 'JAN',
     image: '/iphone1.jpg',
@@ -17,7 +17,7 @@ const articles = [
   },
   {
     id: 3,
-    title: 'L\'impact de l\'iPhone sur le marché mondial',
+    title: 'L&rsquo;impact de l&rsquo;iPhone sur le marché mondial',
     date: '10',
     month: 'MAR',
     image: '/iphone3.jpg',
@@ -39,7 +39,7 @@ export function ARTICLE() {
   
       {/* Bouton (visible uniquement sur grand écran) */}
       <button className='hidden md:block bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-[#072E45] transition'>
-        Plus d'articles
+        Plus d&rsquo;articles
       </button>
       {/*<button className='hidden md:block bg-[#09415E] text-white px-6 py-3 rounded-lg hover:bg-[#072E45] transition-all duration-300 ease-in-out transform hover:translate-y-[-50%] hover:translate-x-[-50%]'>
   Plus d'articles
