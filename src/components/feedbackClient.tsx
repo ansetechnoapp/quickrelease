@@ -32,6 +32,14 @@ const FeedbackClient = () => {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
       rate: 5,
     },
+    {
+      url: "/client-3.png",
+      UrlProfil: "/client.png",
+      name: "James L.",
+      activity: "Manager",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      rate: 5,
+    },
   ];
 
   return (
@@ -69,14 +77,14 @@ const FeedbackClient = () => {
                 {/* Image principale */}
                 <div
                   className="w-full md:w-1/2 rounded-lg pl-6 pr-6"
-                  style={{ backgroundColor: "#696969" }}
+                  style={{ backgroundColor: "#69696940" }}
                 >
                   <Image
                     src={client.url}
                     alt="Client feedback"
-                    width={100}
-                    height={160}
-                    className="w-full h-64 object-container rounded-lg"
+                    width={600}
+                    height={660}
+                    className="w-full h-69 object-container rounded-lg"
                   />
                 </div>
 
@@ -101,7 +109,7 @@ const FeedbackClient = () => {
                   <p className="mt-4 text-gray-700">{client.desc}</p>
 
                   {/* Affichage des étoiles */}
-                  <div className="mt-2 flex space-x-1 text-blue-400">
+                  <div className="mt-2 flex space-x-1  text-[#5C30FD]">
                     {Array(client.rate)
                       .fill(0)
                       .map((_, i) => (
