@@ -128,47 +128,47 @@ export function Navbar() {
               </Button>
             </div>
 
-            <div className="flex justify-between space-x-8 items-center mb-8 md:hidden z-50">
-  {/* Logo visible uniquement lorsque le menu est ouvert */}
-  <div className="left-0 flex-shrink-0">
-    {isMenuOpen && (
-      <img
-        src="/footer-logo.png"
-        alt="Logo"
-        className="w-32 h-auto"
-      />
-    )}
-  </div>
-
-  {/* Bouton pour ouvrir/fermer le menu */}
-  <button
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
-    className="ml-16 p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
-    aria-label="Toggle menu"
-  >
-    {isMenuOpen ? (
-      <X
-        size={24}
-        className="transform rotate-0 transition-transform duration-300"
-      />
-    ) : (
-      <Menu
-        size={24}
-        className="transform rotate-180 transition-transform duration-300"
-      />
-    )}
-  </button>
-</div>
-
+            <div className="flex justify-between space-x-10 items-center mb-8 md:hidden z-50">
+             
+              {/* Bouton pour ouvrir/fermer le menu */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="ml-16 p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X
+                    size={24}
+                    className="transform rotate-0 transition-transform duration-300"
+                  />
+                ) : (
+                  <Menu
+                    size={24}
+                    className="transform rotate-180 transition-transform duration-300"
+                  />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Enhanced Mobile Navigation */}
         <div
-          className={`ml-32 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${
+          className={`ml-32  md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
+           {/* Logo visible uniquement lorsque le menu est ouvert */}
+           <div className="mt-10 left-0 flex-shrink-0">
+                {isMenuOpen && (
+                  <img
+                    src="/footer-logo.png"
+                    alt="Logo"
+                    className="w-32 h-auto"
+                  />
+                )}
+              </div>
+
           <div className="flex flex-col h-full pt-20 pb-6 px-4">
             {navItems.map((item, index) => (
               <a
