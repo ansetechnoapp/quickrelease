@@ -17,8 +17,8 @@ export default function Home() {
    <Hero/>
    <HowItWorks/>
    <Features/>
-   <Pricing/>
-   <Testimonials/>
+   {/* <Pricing/> */}
+   {/* <Testimonials/> */}
    <ARTICLE/>
    <UnlockForm/> 
    <FAQ/>

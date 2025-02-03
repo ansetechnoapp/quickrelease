@@ -10,7 +10,7 @@ const FeedbackClient = () => {
   const section = [
     {
       url: "/client-2.png",
-      UrlProfil: "/client.png",
+      UrlProfil: "/client-2.png",
       name: "Robert T.",
       activity: "Founder",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit dddddddd...",
@@ -18,7 +18,7 @@ const FeedbackClient = () => {
     },
     {
       url: "/client-3.png",
-      UrlProfil: "/client.png",
+      UrlProfil: "/client-3.png",
       name: "Anna R.",
       activity: "CEO",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
@@ -53,10 +53,11 @@ const FeedbackClient = () => {
       </div>
 
       {/* Swiper Container */}
-      <div className="w-full max-w-6xl">
+      {/* <div className="w-full max-w-6xl"> */}
+      <div className="w-full">
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
-          autoplay={{ delay: 9000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
           navigation={false}
           pagination={{
@@ -65,12 +66,12 @@ const FeedbackClient = () => {
           }}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={2}
-          spaceBetween={24}
+          slidesPerView={1}
+          spaceBetween={18}
           breakpoints={{
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 1.2 },
-            1024: { slidesPerView: 2.1 }, // Shows a bit of previous and next slides
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 1.5 },
+            1024: { slidesPerView: 2 }, // Shows a bit of previous and next slides
           }}
           className="w-full"
         >
