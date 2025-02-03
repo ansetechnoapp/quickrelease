@@ -22,7 +22,7 @@ const Wallpaperhero = () => {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
-        // Enable touch drag functionality
+        // Enable touch drag functionality 
         grabCursor={true}
         draggable={true}
         className="w-full h-full"

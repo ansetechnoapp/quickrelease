@@ -13,7 +13,7 @@ const FeedbackClient = () => {
       UrlProfil: "/client.png",
       name: "Robert T.",
       activity: "Founder",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit dddddddd...",
       rate: 5,
     },
     {
@@ -43,84 +43,98 @@ const FeedbackClient = () => {
   ];
 
   return (
-    <div className="relative h-screen flex flex-col items-center justify-center px-4 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
-      <h3 className="text-lg font-semibold text-gray-700">Clients Feedback</h3>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-        We’ve 1250+ Global Clients Say Us
-      </h1>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
+      {/* Header Section */}
+      <div className="text-center space-y-3 mb-12">
+        <h3 className="text-lg font-semibold text-gray-700">Clients Feedback</h3>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+          We've 1250+ Global Clients Say Us
+        </h1>
+      </div>
 
-      <div className="w-full  h-[351px]">
+      {/* Swiper Container */}
+      <div className="w-full max-w-6xl">
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
-          autoplay={{ delay: 5000, disableOnInteraction: true }} // 3s entre chaque slide
-          loop={false} // Assure une boucle infinie
-          loopAdditionalSlides={1} // Évite les problèmes avec peu de slides
+          autoplay={{ delay: 9000, disableOnInteraction: false }}
+          loop={true}
           navigation={false}
-          pagination={{ clickable: true }}
+          pagination={{
+            clickable: true,
+            el: ".custom-pagination",
+          }}
           grabCursor={true}
           centeredSlides={true}
           slidesPerView={2}
-          spaceBetween={20}
+          spaceBetween={24}
           breakpoints={{
-            640: { slidesPerView: 1.2 },
-            768: { slidesPerView: 1.5 },
-            1024: { slidesPerView: 1.8 },
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 1.2 },
+            1024: { slidesPerView: 2.1 }, // Shows a bit of previous and next slides
           }}
           className="w-full"
         >
           {section.map((client, index) => (
-            <SwiperSlide
-              key={index}
-              className="transition-opacity duration-300 swiper-slide-active:opacity-100"
-            >
-              <div className="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-lg">
-                {/* Image principale */}
-                <div
-                  className="w-full md:w-1/2 rounded-lg pl-6 pr-6"
-                  style={{ backgroundColor: "#69696940" }}
-                >
-                  <Image
-                    src={client.url}
-                    alt="Client feedback"
-                    width={600}
-                    height={660}
-                    className="w-full h-69 object-container rounded-lg"
-                  />
-                </div>
-
-                {/* Infos Client */}
-                <div className="md:w-1/2 p-4">
-                  <div className="flex items-center space-x-4">
-                    <Image
-                      src={client.UrlProfil}
-                      alt={client.name}
-                      width={50}
-                      height={50}
-                      className="w-12 h-12 rounded-full"
-                    />
-                    <div>
-                      <p className="font-semibold">{client.name}</p>
-                      <span className="text-sm text-gray-500">
-                        {client.activity}
-                      </span>
+            <SwiperSlide key={index}>
+              <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:max-h-72 my-10">
+                  {/* Image Section */}
+                  <div className="flex justify-center items-center">
+                    <div className="hidden md:flex items-center justify-center bg-gray-100 rounded max-w-52">
+                      <Image
+                        src={client.url}
+                        alt="Client feedback"
+                        width={200}
+                        height={200}
+                        className="max-w-full max-h-full object-contain"
+                      />
                     </div>
                   </div>
 
-                  <p className="mt-4 text-gray-700">{client.desc}</p>
+                  {/* Content Section */}
+                  <div className="p-6 md:p-8 flex flex-col justify-between">
+                    {/* Client Info */}
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
+                          <Image
+                            src={client.UrlProfil}
+                            alt={client.name}
+                            width={56}
+                            height={56}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <p className="text-lg font-semibold text-gray-900">{client.name}</p>
+                          <span className="text-sm text-gray-600">{client.activity}</span>
+                        </div>
+                      </div>
+                      {/* Testimonial */}
+                      <p className="text-gray-700 leading-relaxed break-words whitespace-normal">
+                        {client.desc}
+                      </p>
+                    </div>
 
-                  {/* Affichage des étoiles */}
-                  <div className="mt-2 flex space-x-1  text-[#5C30FD]">
-                    {Array(client.rate)
-                      .fill(0)
-                      .map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
+                    {/* Rating */}
+                    <div className="mt-6">
+                      <div className="flex items-center space-x-1">
+                        {Array(client.rate)
+                          .fill(0)
+                          .map((_, i) => (
+                            <span key={i} className="text-2xl text-[#5C30FD]">
+                              ★
+                            </span>
+                          ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="custom-pagination flex justify-center mt-6"></div>
       </div>
     </div>
   );
