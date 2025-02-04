@@ -1,15 +1,8 @@
 // components/Button.js
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  disabled?: boolean;
-  isLoading?: boolean;
-  icon?: React.ReactNode;
-}
-
-const Button: React.FC<ButtonProps> = ({ children, onClick, disabled = false, isLoading = false, icon }) => {
+const Button = ({ children, onClick, disabled = false, isLoading = false, icon }) => {
   return (
     <button
       onClick={onClick}

@@ -1,5 +1,6 @@
 "use client";
-
+import Link from "next/link";
+import { MapPin } from "lucide-react"; // Importer l'icône MapPin
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
 import Button from "./ui/Button";
@@ -118,13 +119,14 @@ export function Navbar() {
                   />
                 </a>
               ))}
-              <Button onClick={() => setIsMenuOpen(false)} icon={(
-               <FaArrowRight className="ml-2" />
-                
-                )}>Unlock My iCloud</Button>
+              <Button
+                onClick={() => setIsMenuOpen(false)}
+                icon={<FaArrowRight className="ml-2" />}
+              >
+                {" "}
+                <Link href="/other_page/demarrer">Unlock My iCloud</Link>
+              </Button>
             </div>
-
-           
 
             <div className="flex justify-between space-x-10 items-center mb-8 md:hidden z-50">
              
@@ -180,23 +182,36 @@ export function Navbar() {
                 <span>{item.name}</span>
               </a>
             ))}
-            {/* <a
-              href={``}
-              className="flex items-center space-x-3 px-4 py-4 text-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300 transform hover:translate-x-2"
-              style={{
-                animationDelay: `100ms`
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="text-2xl">
-                🔓
-              </span>
-              <span>
-                Unlock My iCloud
-              </span>
-            </a> */}
-<Button onClick={() => setIsMenuOpen(false)} icon={<div>🔓</div>}>Unlock My iCloud</Button>
 
+            <div className="mt-5">
+              <h4 className="font-semibold p-2 text-xl">Contact Info</h4>
+              <div className="m-5">
+                <ul className="space-y-4">
+                  <li className="flex items-center space-x-3">
+                    <Phone size={20} className="text-blue-600" />
+                    <span>+33 7 56 90 40 53</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <Mail size={20} className="text-blue-600" />
+                    <span>icloud@deblocage-rapide.com</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <Clock size={20} className="text-blue-600" />
+                    <span>Disponible 24/7</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <MapPin size={20} className="text-blue-600" />{" "}
+                    {/* Utiliser MapPin à la place de Location */}
+                    <span>123 Rue Exemple, Paris</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <Button onClick={() => setIsMenuOpen(false)} icon={<div>🔓</div>}>
+              {" "}
+              <Link href="/other_page/demarrer">Unlock My iCloud</Link>
+            </Button>
           </div>
         </div>
       </nav>

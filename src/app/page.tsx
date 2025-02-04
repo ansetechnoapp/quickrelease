@@ -6,7 +6,8 @@ import Pricing from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
 import { UnlockForm } from "@/components/UnlockForm";
 import Wallpaperhero from "@/components/wallpaperhero";
-import Image from "next/image";
+import { ARTICLE } from "@/components/article";
+import FeedbackClient from "@/components/feedbackClient";
 
 export default function Home() {
   return (
@@ -16,11 +17,13 @@ export default function Home() {
    <Hero/>
    <HowItWorks/>
    <Features/>
-   <Pricing/>
-   <Testimonials/>
+   {/* <Pricing/> */}
+   {/* <Testimonials/> */}
+   <ARTICLE/>
    <UnlockForm/> 
    <FAQ/>
-   <Footer/>
+   <FeedbackClient/>
+   
    </>
   );
 }
