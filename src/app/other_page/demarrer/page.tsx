@@ -1,9 +1,12 @@
 'use client';
 
+import { UnlockForm } from "@/components/UnlockForm";
+
 const DEMARRER = () => {
   const image = '/breatcome-bg.png';  // Votre image de fond
 
   return (
+    <>
     <div className="relative h-screen overflow-hidden mb-12">
       <div
         className="w-full h-full bg-cover bg-center"
@@ -20,6 +23,8 @@ const DEMARRER = () => {
         </div>
       </div>
     </div>
+    <UnlockForm/> 
+    </>
   );
 };
 
