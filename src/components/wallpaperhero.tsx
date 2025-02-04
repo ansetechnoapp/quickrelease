@@ -6,10 +6,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const Wallpaperhero = () => {
-  const section = [
-    { title: "Welcome to My Website", subtitle: "Welcome to My Website", buttonText: "Welcome and Unlock", url: 'https://cdn.futura-sciences.com/sources/images/dossier/773/01-intro-773.jpg' },
-    { title: "Welcome to My Website1", subtitle: "Welcome to My Website1", buttonText: "Welcome to My Website2", url: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg' },
-    { title: "Welcome to My Website2", subtitle: "Welcome to My Website2", buttonText: "Welcome to My Web3", url: 'https://cdn.futura-sciences.com/sources/images/AI-creation.jpg' },
+  const images = [
+    'https://cdn.futura-sciences.com/sources/images/dossier/773/01-intro-773.jpg',
+    'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+    'https://cdn.futura-sciences.com/sources/images/AI-creation.jpg',
   ];
   return (
     <div className="relative h-screen overflow-hidden">
@@ -22,7 +22,7 @@ const Wallpaperhero = () => {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
-        // Enable touch drag functionality
+        // Enable touch drag functionality 
         grabCursor={true}
         draggable={true}
         className="w-full h-full"
@@ -34,15 +34,14 @@ const Wallpaperhero = () => {
               style={{ backgroundImage: `url(${image.url})` }}
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-              <div className="text-center text-white">
-                <h1 className="text-5xl font-bold mb-4">{image.title}</h1>
-                <p className="text-xl mb-8">{image.subtitle}</p>
-                <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
-                  {image.buttonText}
-                </button>
-
-              </div>
-            </div>
+        <div className="text-center text-white">
+          <h1 className="text-5xl font-bold mb-4">Welcome to My Website</h1>
+          <p className="text-xl mb-8">Explore the best content on the web</p>
+          <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+            Get Started
+          </button>
+        </div>
+      </div>
           </SwiperSlide>
         ))}
       </Swiper>

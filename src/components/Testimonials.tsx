@@ -18,10 +18,10 @@ export function Testimonials() {
       ];
     
       return (
-        <section id='testimonials' className='bg-white py-16'>
-          <div className='container mx-auto px-6'>
-            <h2 className='text-3xl font-bold text-center text-gray-800 mb-12'>What Our Customers Say</h2>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <section id="testimonials" className="bg-white py-16">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">What Our Customers Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}

@@ -6,7 +6,7 @@ import Pricing from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
 import { UnlockForm } from "@/components/UnlockForm";
 import Wallpaperhero from "@/components/wallpaperhero";
-import { ARTICLE } from "@/components/article";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -18,10 +18,9 @@ export default function Home() {
    <Features/>
    <Pricing/>
    <Testimonials/>
-   <ARTICLE/>
    <UnlockForm/> 
    <FAQ/>
-   
+   <Footer/>
    </>
   );
 }
