@@ -8,18 +8,16 @@ import FeedbackClient from "@/components/feedbackClient";
 
 export default function Home() {
   return (
-   <>
-   
-   <Wallpaperhero/>
-   <Hero/>
-   <HowItWorks/>
-   <Features/>
-   {/* <Pricing/> */}
-   {/* <Testimonials/> */}
-   <Info/>
-   <FAQ/>
-   <FeedbackClient/>
-   
-   </>
+    <>
+
+      <Wallpaperhero />
+      <Hero />
+      <HowItWorks />
+      <Features />
+      {/* <Pricing/> */}
+      {/* <Testimonials/> */}
+      <FeedbackClient />
+      <Info />
+    </>
   );
 }
