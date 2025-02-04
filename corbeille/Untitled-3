@@ -2,7 +2,7 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
-import Button from "./ui/Button";
+import Button from "../src/components/ui/Button";
 import { FaArrowRight } from "react-icons/fa6";
 
 export function Navbar() {
