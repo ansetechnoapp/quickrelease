@@ -33,13 +33,13 @@ export function Info() {
       <div className="text-left">
         <h5 className="text-gray-500 text-lg">Derniers articles</h5>
         <h1 className="md:text-3xl font-bold text-[#09415E]">
-          L'actualité de nos partenaires
+          L&apos;actualité de nos partenaires
         </h1>
       </div>
   
       {/* Bouton (visible uniquement sur grand écran) */}
       <button className="hidden md:block bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-[#072E45] transition">
-        Plus d'articles
+        Plus d&apos;articles
       </button>
       {/*<button className="hidden md:block bg-[#09415E] text-white px-6 py-3 rounded-lg hover:bg-[#072E45] transition-all duration-300 ease-in-out transform hover:translate-y-[-50%] hover:translate-x-[-50%]">
   Plus d'articles
