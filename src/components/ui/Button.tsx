@@ -1,6 +1,5 @@
 // components/Button.js
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
 
 interface ButtonProps {
   children: React.ReactNode;

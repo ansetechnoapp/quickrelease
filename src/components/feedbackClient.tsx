@@ -48,7 +48,7 @@ const FeedbackClient = () => {
       <div className="text-center space-y-3 mb-12">
         <h3 className="text-lg font-semibold text-gray-700">Clients Feedback</h3>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-          We've 1250+ Global Clients Say Us
+          We&apos;ve 1250+ Global Clients Say Us
         </h1>
       </div>
 
