@@ -1,9 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 export function Footer() {
+  const controls = useAnimation();
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.01,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [inView, controls]);
+
   return (
     <div className="flex flex-col">
       <footer className="relative text-white w-full py-8">
@@ -17,55 +33,22 @@ export function Footer() {
         {/* Conteneur noir devant l'image */}
         <div className="absolute top-0 left-0 w-full h-full bg-[#040404] opacity-90"></div>
 
-        {/* Barre supérieure - Version responsive */}
-        {/* <div className="w-full flex justify-center absolute z-50 top-0">
-          <div className="flex flex-col md:flex-row bg-[url('/subscribe-bg.png')] bg-cover bg-center w-full md:w-[90%] 
-          lg:w-[1140px] h-auto md:h-[130px] items-center p-4 md:px-6 md:space-x-6  md:space-y-0 relative justify-between">
-
-
-            
-            <div className="md:mr-0 w-full md:w-auto ">
-              <div className="flex flex-wrap flex-col md:flex-row items-center md:space-x-9 space-y-4 md:space-y-0">
-                <div className="bg-white rounded-full w-[70px] h-[70px] flex justify-center items-center">
-                  <Image
-                    src="/subscribe-icon.png"
-                    alt="Icône d'abonnement"
-                    width={34}
-                    height={34}
-                    className="w-8 h-8 md:w-10 md:h-10"
-                  />
-                </div>
-                <div className="text-center md:text-left mt-2">
-                  <p className="text-sm md:text-lg font-bold text-[#00197B] break-words">
-                    Commencer le processus
-                  </p>
-                  <h1 className="text-sm md:text-base text-[#00197B] break-words">
-                    Débloquer mon iCloud
-                  </h1>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row w-full md:w-auto  md:space-y-0  ">
-              <input
-                type="text"
-                placeholder="Numero IMEI"
-                className="h-12 md:h-[56px] w-full md:w-[316px] border border-gray-300 px-4 py-2 text-black"
-                required
-              />
-              <button className="h-12 md:h-[56px] w-full md:w-[126px] bg-[#00197D] text-white px-4 py-2">
-                Débloquer
-              </button>
-            </div>
-
-
-
-
-          </div>
-        </div> */}
-        <div className="w-full flex justify-center absolute z-50 top-0">
+        {/* Conteneur principal animé */}
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1.5, ease: "easeOut" },
+            },
+          }}
+          className="w-full flex justify-center absolute z-50 top-0"
+        >
           <div className="flex flex-col md:flex-row bg-[url('/subscribe-bg.png')] bg-cover bg-center w-full md:w-[90%] lg:w-[1140px] h-auto md:h-[130px] items-center p-4 md:px-6 md:space-x-6 md:space-y-0 relative justify-between">
-
             {/* Left Section */}
             <div className="w-full md:w-auto flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
               <div className="bg-white rounded-full w-[70px] h-[70px] flex justify-center items-center">
@@ -99,9 +82,9 @@ export function Footer() {
                 Débloquer
               </button>
             </div>
-
           </div>
-        </div>
+        </motion.div>
+
         {/* Contenu principal responsive */}
         <div className="mx-auto px-4 md:px-6 relative z-10 mt-20 md:mt-40">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -120,9 +103,6 @@ export function Footer() {
                 Déblocage rapide, la plateforme 100% fiable pour votre déblocage
                 sécurisé et rapide.
               </p>
-              <div className="flex flex-wrap flex-row items-center space-x-4">
-                {/* Icons... (rest of the social icons remain unchanged) */}
-              </div>
             </div>
 
             {/* Section 2 */}
@@ -262,15 +242,16 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col ml-2">
                     <h1 className="font-bold text-white">Email:</h1>
-                    <h6>support@unlockmydevice.com</h6>
+                    <h6>contact@deblocagerapide.com</h6>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* Animation */}
+        {/* Animation de fond */}
         <motion.div
           initial={{ y: 0 }}
           animate={{ y: 20 }}
@@ -283,6 +264,7 @@ export function Footer() {
           className="absolute top-0 left-0 w-full h-48 md:h-[245px] bg-[url('/footer-shape.jpg')] bg-cover bg-no-repeat opacity-50"
         />
       </footer>
+
       {/* Copyright */}
       <div className="h-14 bg-[#00197D] w-full">
         <p className="text-center text-gray-400 text-sm md:text-base py-4 break-words">
