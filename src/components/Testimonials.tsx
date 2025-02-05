@@ -33,7 +33,7 @@ export function Testimonials() {
                     className="w-20 h-20 rounded-full mb-4"
                   />
                   <h3 className="text-lg font-semibold text-gray-800">{testimonial.name}</h3>
-                  <p className="text-gray-600 mt-2">"{testimonial.feedback}"</p>
+                  <p className="text-gray-600 mt-2">&quot;{testimonial.feedback}&quot;</p>
                 </div>
               ))}
             </div>
