@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export function GARANTIE() {
+export function Garantie() {
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: false, // Permet de rejouer l'animation à chaque scroll
@@ -60,11 +60,11 @@ export function GARANTIE() {
             Processus simplifié
           </h3>
           <h1 className="text-[#00187B] text-4xl font-bold mb-4">
-            Garantie d'une satisfaction rapide
+            Garantie d&apos;une satisfaction rapide
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            En quelques clics, vous profitez d'un appareil débloqué et prêt à
-            l'emploi.
+            En quelques clics, vous profitez d&apos;un appareil débloqué et prêt à
+            l&apos;emploi.
           </p>
         </div>
 
