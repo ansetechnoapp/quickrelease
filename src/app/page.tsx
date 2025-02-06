@@ -13,9 +13,14 @@ export default function Home() {
 
       <Wallpaperhero />
       <Hero />
+
       <GARANTIE/>
       <HowItWorks />
       {/* <Features /> */}
+
+      <HowItWorks />
+      
+
       {/* <Pricing/> */}
       {/* <Testimonials/> */}
       <FeedbackClient />
