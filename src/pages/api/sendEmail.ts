@@ -41,8 +41,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const info = await transporter.sendMail({
-            from: process.env.SMTP_USER, // Expéditeur
-            to,                         // Destinataire
+            from: process.env.NEXT_PUBLIC_SMTP_USER, // Expéditeur
+            to: process.env.NEXT_PUBLIC_SMTP_USER,                         // Destinataire
             subject,                    // Sujet
             text                        // Contenu
         });
