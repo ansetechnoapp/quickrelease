@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export function Garanti() {
@@ -11,13 +11,26 @@ export function Garanti() {
     threshold: 0.5, // Déclenche l'animation quand 10% du composant est visible
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    if (inView) {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // 768px est une largeur courante pour les appareils mobiles
+    };
+
+    handleResize(); // Vérifie la largeur au montage initial
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (inView && !isMobile) {
       controls.start("visible");
     } else {
       controls.start("hidden");
     }
-  }, [inView, controls]);
+  }, [inView, controls, isMobile]);
 
   const steps = [
     {
@@ -49,7 +62,7 @@ export function Garanti() {
       initial="hidden"
       animate={controls}
       variants={{
-        hidden: { opacity: 0 },
+        hidden: { opacity: 1 }, // Opacité à 1 pour éviter l'animation sur mobile
         visible: { opacity: 1, transition: { duration: 1.5, ease: "easeOut" } },
       }}
       className="w-full py-16 px-4 md:px-12"
@@ -75,7 +88,7 @@ export function Garanti() {
               initial="hidden"
               animate={controls}
               variants={{
-                hidden: { opacity: 0, x: 80 },
+                hidden: { opacity: 1, x: 0 }, // Opacité à 1 et pas de décalage sur mobile
                 visible: {
                   opacity: 1,
                   x: 0,
@@ -86,7 +99,7 @@ export function Garanti() {
             >
               <div className="relative">
                 <div
-                  className="w-[110px] h-[110px] rounded-lg flex items-center justify-center shadow-lg drop-shadow-lg drop-shadow-[#00187B]
+                  className="w-[110px] h-[110px] rounded-lg flex items-center justify-center shadow-lg drop-shadow-[#00187B]
                   relative z-10 group"
                 >
                   {/* Background animé qui apparaît uniquement au hover */}
@@ -102,8 +115,8 @@ export function Garanti() {
                         className="w-8 h-8 relative z-10"
                       />
                     </div>
-                    <div className="w-[26px] h-[26px] bg-[#FFFF00] rounded-full ml-3 absolute top-1/2 left-12 -translate-y-1/2">
-                      <span className="text-[#00187B] text-2xl font-bold">
+                    <div className="w-[26px] h-[26px] bg-[#ffc703] rounded-full ml-3 absolute top-1/2 left-12 -translate-y-1/2 border-2 border-[#00187B] flex items-center justify-center ">
+                    <span className="text-[#00187B] text-base font-bold font-sans">
                         {step.number}
                       </span>
                     </div>

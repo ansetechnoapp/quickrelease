@@ -34,10 +34,10 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   const navItems = [
-    { name: "Home", icon: "🏠" },
-    { name: "About Us", icon: "ℹ️" },
-    { name: "How It Works?", icon: "🔄" },
-    { name: "Testimonials", icon: "⭐" },
+    { name: "Accueil", icon: "🏠" },
+    { name: "A propos", icon: "ℹ️" },
+    { name: "comment sa marche?", icon: "🔄" },
+    { name: "Avis", icon: "⭐" },
   ];
 
   return (
@@ -94,7 +94,7 @@ export function Navbar() {
                 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent
                 hover:from-blue-500 hover:to-blue-300 transition-all duration-300"
               >
-                UnlockMyDevice
+               DébloquerMonICloud
               </span>
             </div>
 
@@ -124,7 +124,7 @@ export function Navbar() {
                 icon={<FaArrowRight className="ml-2" />}
               >
                 {" "}
-                <Link href="/demarrer">Unlock My iCloud</Link>
+                <Link href="/demarrer">Débloquer mon iCloud</Link>
               </Button>
             </div>
 
