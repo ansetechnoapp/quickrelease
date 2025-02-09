@@ -94,7 +94,7 @@ interface UnlockFormProps {
   setShowSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) => {
+const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   interface FormData {
@@ -235,7 +235,7 @@ interface FAQProps {
   inView: boolean;
 }
 
-const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(({ inView }, ref) => {
+const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, ref) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   const faqs = [
