@@ -85,7 +85,7 @@ const ArticleCard = memo(({ article, index }: ArticleCardProps) => {
           </h3>
 
           <p className="text-gray-700 text-sm mt-4 text-left leading-[26px]">
-            L'iPhone d'Apple était une innovation majeure dans l'industrie de la téléphonie mobile.
+            L&apos;iPhone d&apos;Apple était une innovation majeure dans l&apos;industrie de la téléphonie mobile.
           </p>
 
           <motion.div 
