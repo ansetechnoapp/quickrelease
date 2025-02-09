@@ -5,7 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import Wallpaperhero from "@/components/wallpaperhero";
 import { Info } from "@/components/Info";
 import FeedbackClient from "@/components/feedbackClient";
-import { Garantie } from "@/components/garantie";
+import { Garantie } from "@/components/Garantie";
 
 export default function Home() {
   return (

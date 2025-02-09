@@ -124,7 +124,7 @@ export function Navbar() {
                 icon={<FaArrowRight className="ml-2" />}
               >
                 {" "}
-                <Link href="/other_page/demarrer">Unlock My iCloud</Link>
+                <Link href="/demarrer">Unlock My iCloud</Link>
               </Button>
             </div>
 
@@ -210,7 +210,7 @@ export function Navbar() {
 
             <Button onClick={() => setIsMenuOpen(false)} icon={<div>🔓</div>}>
               {" "}
-              <Link href="/other_page/demarrer">Unlock My iCloud</Link>
+              <Link href="/demarrer">Unlock My iCloud</Link>
             </Button>
           </div>
         </div>
