@@ -30,18 +30,25 @@ export function UnlockForm() {
   const handleSubmit = async (e: SubmitEvent): Promise<void> => {
     e.preventDefault();
     try {
+      // Transform the form data to match the backend's expected format
+      const emailData = {
+        to: formData.email, // Use the email from the form as the recipient
+        subject: `Unlock Request for ${formData.deviceModel}`, // Create a subject
+        text: `Device Model: ${formData.deviceModel}\nIMEI: ${formData.imei}\nEmail: ${formData.email}`, // Create the email content
+      };
+  
       const response: FetchResponse = await fetch('/api/sendEmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(emailData), // Send the transformed data
       });
-
+  
       if (!response.ok) {
         throw new Error('Erreur lors de l\'envoi de l\'email');
       }
-
+  
       alert('Email sent successfully!');
     } catch (error) {
       console.error('Erreur lors de l\'envoi de l\'email:', error);
