@@ -5,7 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import Wallpaperhero from "@/components/wallpaperhero";
 import { Info } from "@/components/Info";
 import FeedbackClient from "@/components/feedbackClient";
-import { Garantie } from "@/components/Garantie";
+import { Garanti } from "@/components/Garanti";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <Wallpaperhero />
       <Hero />
 
-      <Garantie/>
+      <Garanti/>
       <HowItWorks />
       {/* <Features /> */}
 

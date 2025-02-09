@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export function Garantie() {
+export function Garanti() {
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: false, // Permet de rejouer l'animation à chaque scroll
