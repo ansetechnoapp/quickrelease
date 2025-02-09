@@ -21,7 +21,7 @@ export function UnlockForm() {
     }));
   };
 
-  interface SubmitEvent extends React.FormEvent<HTMLFormElement> {}
+  type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
   interface FetchResponse {
     ok: boolean;
