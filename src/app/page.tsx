@@ -6,24 +6,34 @@ import Wallpaperhero from "@/components/wallpaperhero";
 import { Info } from "@/components/Info";
 import FeedbackClient from "@/components/feedbackClient";
 import { Garanti } from "@/components/Garanti";
+import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
+  const navItems = [
+    { name: "Accueil", icon: "🏠", link: "/" },
+    { name: "A propos", icon: "ℹ️", link: "#about" },
+    { name: "comment sa marche?", icon: "🔄", link: "#how-it-works" },
+    { name: "Avis", icon: "⭐", link: "#feedback" },
+  ];
   return (
     <>
+      <Navbar navItems={navItems} />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+        <Wallpaperhero />
+        <Hero />
 
-      <Wallpaperhero />
-      <Hero />
+        <Garanti />
+        <HowItWorks />
+        {/* <Features /> */}
 
-      <Garanti/>
-      <HowItWorks />
-      {/* <Features /> */}
 
-      
 
-      {/* <Pricing/> */}
-      {/* <Testimonials/> */}
-      <FeedbackClient />
-      <Info />
+        {/* <Pricing/> */}
+        {/* <Testimonials/> */}
+        <FeedbackClient />
+        <Info />
+      </div>
+
     </>
   );
 }

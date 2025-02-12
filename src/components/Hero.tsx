@@ -29,6 +29,7 @@ export function Hero() {
         visible: { scale: 1, opacity: 1, transition: { duration: 1.5, ease: "easeOut" } },
       }}
       className="bg-gray-50 py-16"
+      id="about"
     >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-6">
         {/* Text Content */}

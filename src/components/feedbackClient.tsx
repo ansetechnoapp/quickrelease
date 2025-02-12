@@ -43,7 +43,7 @@ const FeedbackClient = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
+    <div id="feedback" className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
       {/* Header Section */}
       <div className="text-center space-y-3 mb-12">
         <h3 className="text-lg font-semibold text-gray-700">Clients Feedback</h3>
