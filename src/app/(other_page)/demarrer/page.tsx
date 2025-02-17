@@ -9,7 +9,7 @@ import FAQ from '@/components/FAQ';
 import { Navbar } from '@/components/Navbar';
 
 const Demarrer = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const [showSuccess, setShowSuccess] = useState(false);
   const { ref: heroRef, inView: heroInView } = useInView();
   const { ref: formRef, inView: formInView } = useInView({ threshold: 0.2 });

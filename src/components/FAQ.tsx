@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Search, ArrowRight, Star } from "lucide-react";
 
-interface FAQProps {
+interface FAQProps { 
   inView: boolean;
 }
 
