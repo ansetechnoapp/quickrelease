@@ -4,9 +4,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+} from "./ui/accordion";
+import { Button } from "./ui/buttonssssss";
+import { Card, CardContent } from "./ui/card";
 import { Mail, Search, ArrowRight, Star } from "lucide-react";
 
 interface FAQProps { 
