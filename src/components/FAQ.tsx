@@ -37,6 +37,9 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
 
   return (
     <section id="faq" ref={ref} className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-16 px-4">
+      {inView && (
+        <div>Some content that only renders when inView is true</div>
+      )}
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header Section */}
         <div className="text-center space-y-4">
