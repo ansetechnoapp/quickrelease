@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react"; // Importer l'icône MapPin
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
 // import Button from "./ui/Button";
-import { Button } from "./ui/buttonssssss";
+import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
 
 interface NavItem {
