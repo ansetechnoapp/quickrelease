@@ -40,7 +40,7 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header Section */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-purple-900">Centre d'aide</h1>
+          <h1 className="text-4xl font-bold text-purple-900">Centre d&apos;aide</h1>
           <p className="text-lg text-purple-600">Trouvez rapidement les réponses à vos questions</p>
           
           {/* Search Bar */}
@@ -94,7 +94,7 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
                   <div className="bg-white/10 p-4 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
                     <Star className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl font-semibold">Besoin d'aide personnalisée ?</h3>
+                  <h3 className="text-xl font-semibold">Besoin d&apos;aide personnalisée ?</h3>
                   <p className="text-purple-100">Notre équipe est là pour vous aider</p>
                 </div>
 
