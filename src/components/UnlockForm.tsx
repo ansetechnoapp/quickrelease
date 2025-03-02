@@ -63,7 +63,7 @@ export function UnlockForm() {
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-gray-50 p-6 shadow-md rounded-lg">
           <div className="mb-4">
             <label htmlFor="deviceModel" className="block text-gray-700 font-medium mb-2">
-              Modèle d'Appareil 
+              Modèle d&apos;Appareil 
             </label>
             <input
               type="text"

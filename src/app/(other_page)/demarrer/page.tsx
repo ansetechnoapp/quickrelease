@@ -13,7 +13,7 @@ const Demarrer = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const { ref: heroRef, inView: heroInView } = useInView();
   const { ref: formRef, inView: formInView } = useInView({ threshold: 0.2 });
-  const { ref: faqRef, inView: faqInView } = useInView({ threshold: 0.2 });
+  const { ref: faqRef } = useInView({ threshold: 0.2 });
 
   const navItems = [
     { name: "Accueil", icon: "🏠", link: "/" },
@@ -177,7 +177,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
                   <Smartphone className="w-4 h-4" />
-                  Modèle d'appareil
+                  Modèle d&apos;appareil
                 </label>
                 <input
                   {...register("deviceModel", { required: "Le modèle d'appareil est requis" })}

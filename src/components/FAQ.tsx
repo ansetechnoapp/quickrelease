@@ -7,7 +7,7 @@ import {
 } from "./ui/accordion";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { Mail, Search, ArrowRight, Star } from "lucide-react";
+import { Mail, Search, ArrowRight } from "lucide-react";
 
 
 
