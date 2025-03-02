@@ -97,7 +97,7 @@ const Demarrer = () => {
         )}
 
         {/* FAQ Section */}
-        <FAQ ref={faqRef} inView={faqInView} />
+        <FAQ ref={faqRef}  />
       </div>
     </div>
 
@@ -132,7 +132,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
       const emailData: EmailData = {
         to: data.email,
         subject: `Unlock Request for ${data.deviceModel}`,
-        text: `Device Model: ${data.deviceModel}\nIMEI: ${data.imei}\nEmail: ${data.email}`,
+        text: `Modèle d'appareil: ${data.deviceModel}\nIMEI: ${data.imei}\nEmail: ${data.email}`,
       };
 
       const response = await fetch('/api/sendEmail', {
@@ -170,17 +170,17 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
         <div className="w-full md:w-1/2">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-              Unlock Your Device
+              Débloquer Votre Appareil
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
                   <Smartphone className="w-4 h-4" />
-                  Device Model
+                  Modèle d'appareil
                 </label>
                 <input
-                  {...register("deviceModel", { required: "Device model is required" })}
+                  {...register("deviceModel", { required: "Le modèle d'appareil est requis" })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="e.g., iPhone 12 Pro"
                 />
@@ -192,14 +192,14 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
                   <Lock className="w-4 h-4" />
-                  IMEI Number
+                  Numéro IMEI
                 </label>
                 <input
                   {...register("imei", {
-                    required: "IMEI is required",
+                    required: "L'IMEI est requis",
                     pattern: {
                       value: /^\d{15}$/,
-                      message: "IMEI must be 15 digits"
+                      message: "L'IMEI doit contenir 15 chiffres"
                     }
                   })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -213,14 +213,14 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
                   <Mail className="w-4 h-4" />
-                  Email Address
+                  Adresse Email
                 </label>
                 <input
                   {...register("email", {
-                    required: "Email is required",
+                    required: "L'email est requis",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid email address"
+                      message: "Adresse email invalide"
                     }
                   })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -244,7 +244,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
                 ) : (
                   <>
                     <Unlock className="w-5 h-5" />
-                    Submit Request
+                    <span>Demarrer</span>
                   </>
                 )}
               </motion.button>

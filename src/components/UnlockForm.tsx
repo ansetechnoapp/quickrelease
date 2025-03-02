@@ -59,24 +59,24 @@ export function UnlockForm() {
   return (
     <section id="unlock" className="bg-white py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Unlock Your Device</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Débloquer Votre Appareil</h2>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-gray-50 p-6 shadow-md rounded-lg">
           <div className="mb-4">
             <label htmlFor="deviceModel" className="block text-gray-700 font-medium mb-2">
-              Device Model
+              Modèle d'Appareil 
             </label>
             <input
               type="text"
               id="deviceModel"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="e.g., iPhone 12 Pro"
+              placeholder="ex: iPhone 12 Pro"
               value={formData.deviceModel}
               onChange={handleChange}
             />
           </div>
           <div className="mb-4">
             <label htmlFor="imei" className="block text-gray-700 font-medium mb-2">
-              IMEI Number
+              Numéro IMEI
             </label>
             <input
               type="text"
@@ -89,7 +89,7 @@ export function UnlockForm() {
           </div>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-              Email Address
+              Adresse Email
             </label>
             <input
               type="email"
@@ -102,9 +102,9 @@ export function UnlockForm() {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg shadow hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg shadow hover:bg-blue-700 transition duration-300"
           >
-            Submit
+            Envoyer
           </button>
         </form>
       </div>

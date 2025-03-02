@@ -9,11 +9,9 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Mail, Search, ArrowRight, Star } from "lucide-react";
 
-interface FAQProps { 
-  inView: boolean;
-}
 
-const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, ref) {
+
+const FAQ = React.forwardRef<HTMLDivElement>(function FAQ(props, ref) {
   const faqs = [
     {
       question: "Combien de temps prend le processus de déverrouillage ?",
@@ -37,9 +35,6 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
 
   return (
     <section id="faq" ref={ref} className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-16 px-4">
-      {inView && (
-        <div>Some content that only renders when inView is true</div>
-      )}
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header Section */}
         <div className="text-center space-y-4">
@@ -93,12 +88,9 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
           <div className="md:col-span-1">
             <Card className="border-0 shadow-xl bg-gradient-to-br  text-white bg-blue-600">
               <CardContent className="p-6 space-y-6">
-                <div className="text-center space-y-4">
-                  <div className="bg-white/10 p-4 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
-                    <Star className="w-8 h-8" />
-                  </div>
+                <div className="text-center text-white">
                   <h3 className="text-xl font-semibold">Besoin d&apos;aide personnalisée ?</h3>
-                  <p className="text-purple-100">Notre équipe est là pour vous aider</p>
+                  <p className="text-white/80">Notre équipe est là pour vous aider</p>
                 </div>
 
                 <div className="space-y-4">
@@ -107,12 +99,12 @@ const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(function FAQ({ inView }, 
                     className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20 space-x-2"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>a@gmail.com</span>
+                    <span>contact@deblocage-device.com</span>
                   </Button>
                   <Button 
                     className="w-full bg-white text-blue-600 hover:bg-purple-50"
                   >
-                    Programme premium
+                    Programme Premium
                   </Button>
                 </div>
               </CardContent>
