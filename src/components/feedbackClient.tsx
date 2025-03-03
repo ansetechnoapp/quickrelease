@@ -13,23 +13,23 @@ const FeedbackClient = () => {
       UrlProfil: "/client-2.png",
       name: "Robert T.",
       activity: "Founder",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit dddddddd...",
-      rate: 5,
+      desc: "Franchement, super service ! Mon téléphone était bloqué, et en moins d’une heure, tout était réglé. Rapide et efficace, je recommande à 100 % !",
+      rate: 4,
     },
     {
       url: "/client-3.png",
       UrlProfil: "/client-3.png",
       name: "Anna R.",
       activity: "CEO",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      rate: 4,
+      desc: "J’étais sceptique au début, mais j’ai tenté le coup… Et je ne regrette pas ! Mon appareil a été déverrouillé sans aucun souci, et en plus, le service client est top.",
+      rate: 5,
     },
     {
       url: "/client-2.png",
       UrlProfil: "/client.png",
       name: "James L.",
       activity: "Manager",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "J’avais peur que ce soit compliqué, mais en fait, tout s’est fait super facilement. Explications claires, procédure rapide… Bref, parfait !",
       rate: 5,
     },
     {
@@ -37,18 +37,50 @@ const FeedbackClient = () => {
       UrlProfil: "/client.png",
       name: "James L.",
       activity: "Manager",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "J’ai pu récupérer l’accès à mon téléphone sans galérer. Service rapide et sérieux, rien à redire. Merci encore !",
+      rate: 4,
+    },
+    {
+      url: "/client-3.png",
+      UrlProfil: "/client.png",
+      name: "James L.",
+      activity: "Manager",
+      desc: "Très bon service, j’ai pu déverrouiller mon appareil sans problème. Juste un peu plus long que prévu, mais sinon nickel.",
+      rate: 3,
+    },
+    {
+      url: "/client-3.png",
+      UrlProfil: "/client.png",
+      name: "James L.",
+      activity: "Manager",
+      desc: "Super efficace ! J’ai suivi les instructions, et en quelques minutes, mon téléphone était débloqué. Je garde précieusement cette adresse !",
       rate: 5,
     },
+    {
+      url: "/client-3.png",
+      UrlProfil: "/client.png",
+      name: "James L.",
+      activity: "Manager",
+      desc: "Service fiable et sécurisé, mon téléphone fonctionne parfaitement après le déblocage. Un léger retard dans le traitement, mais rien de bien méchant.",
+      rate: 4,
+    },
+    {
+      url: "/client-3.png",
+      UrlProfil: "/client.png",
+      name: "James L.",
+      activity: "Manager",
+      desc: "J’avais peur de tomber sur une arnaque, mais pas du tout ! Tout s’est bien passé, et mon téléphone est enfin utilisable à nouveau. Je recommande les yeux fermés.",
+      rate: 5,
+    }
   ];
 
   return (
     <div id="feedback" className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
       {/* Header Section */}
       <div className="text-center space-y-3 mb-12">
-        <h3 className="text-lg font-semibold text-gray-700">Clients Feedback</h3>
+        <h3 className="text-lg font-semibold text-gray-700">Retour clients</h3>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-          We&apos;ve 1250+ Global Clients Say Us
+        Nous avons plus de 1250 clients mondiaux qui nous disent qu'ils sont satisfaits
         </h1>
       </div>
 

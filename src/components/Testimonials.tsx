@@ -15,7 +15,7 @@ export function Testimonials() {
           feedback: "Affordable and reliable. Will definitely use their service again!",
           image: "/user3.jpg",
         },
-      ];
+      ]; 
     
       return (
         <section id="testimonials" className="bg-white py-16">
