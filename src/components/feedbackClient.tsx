@@ -17,56 +17,56 @@ const FeedbackClient = () => {
       rate: 4,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client-3.png",
+      url: "/az&4.webp",
+      UrlProfil: "/az&4.webp",
       name: "Anna R.",
       activity: "CEO",
       desc: "J’étais sceptique au début, mais j’ai tenté le coup… Et je ne regrette pas ! Mon appareil a été déverrouillé sans aucun souci, et en plus, le service client est top.",
       rate: 5,
     },
     {
-      url: "/client-2.png",
-      UrlProfil: "/client.png",
+      url: "/az&3.jpg",
+      UrlProfil: "/az&3.jpg",
       name: "James L.",
       activity: "Manager",
       desc: "J’avais peur que ce soit compliqué, mais en fait, tout s’est fait super facilement. Explications claires, procédure rapide… Bref, parfait !",
       rate: 5,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client.png",
+      url: "/az&2.jpg",
+      UrlProfil: "/az&2.jpg",
       name: "James L.",
       activity: "Manager",
       desc: "J’ai pu récupérer l’accès à mon téléphone sans galérer. Service rapide et sérieux, rien à redire. Merci encore !",
       rate: 4,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client.png",
+      url: "/az&1.jpg",
+      UrlProfil: "/az&1.jpg",
       name: "James L.",
       activity: "Manager",
       desc: "Très bon service, j’ai pu déverrouiller mon appareil sans problème. Juste un peu plus long que prévu, mais sinon nickel.",
       rate: 3,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client.png",
+      url: "/az&5.png",
+      UrlProfil: "/az&5.png",
       name: "James L.",
       activity: "Manager",
       desc: "Super efficace ! J’ai suivi les instructions, et en quelques minutes, mon téléphone était débloqué. Je garde précieusement cette adresse !",
       rate: 5,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client.png",
+      url: "/az&7.webp",
+      UrlProfil: "/az&7.webp",
       name: "James L.",
       activity: "Manager",
       desc: "Service fiable et sécurisé, mon téléphone fonctionne parfaitement après le déblocage. Un léger retard dans le traitement, mais rien de bien méchant.",
       rate: 4,
     },
     {
-      url: "/client-3.png",
-      UrlProfil: "/client.png",
+      url: "/az&6.png",
+      UrlProfil: "/az&6.png",
       name: "James L.",
       activity: "Manager",
       desc: "J’avais peur de tomber sur une arnaque, mais pas du tout ! Tout s’est bien passé, et mon téléphone est enfin utilisable à nouveau. Je recommande les yeux fermés.",
@@ -75,7 +75,7 @@ const FeedbackClient = () => {
   ];
 
   return (
-    <div id="feedback" className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
+    <div id="feedback" className="h-[75vh] flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
       {/* Header Section */}
       <div className="text-center space-y-3 mb-12">
         <h3 className="text-lg font-semibold text-gray-700">Retour clients</h3>
