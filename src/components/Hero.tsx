@@ -69,7 +69,7 @@ export function Hero() {
           className="grid place-items-center md:place-items-end"
         >
           <img
-            src="/about-thumb2.png"
+            src="/iphone image handle.png"
             alt="Device unlocking illustration"
             className="w-full max-w-md md:max-w-lg"
           />

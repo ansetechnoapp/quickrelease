@@ -20,18 +20,21 @@ export default function Home() {
       <Navbar navItems={navItems} />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <Wallpaperhero />
-        <Hero />
+        <div className="px-20">
+          <Hero />
 
-        <Garanti />
-        <HowItWorks />
-        {/* <Features /> */}
+          <Garanti />
+          <HowItWorks />
+          {/* <Features /> */}
 
 
 
-        {/* <Pricing/> */}
-        {/* <Testimonials/> */}
+          {/* <Pricing/> */}
+          {/* <Testimonials/> */}
+        </div>
         <FeedbackClient />
         <Info />
+
       </div>
 
     </>

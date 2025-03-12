@@ -75,11 +75,11 @@ const FeedbackClient = () => {
   ];
 
   return (
-    <div id="feedback" className="h-[75vh] flex flex-col items-center justify-center px-4 py-12 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
+    <div id="feedback" className="h-[75vh] flex flex-col items-center justify-center px-4 my-20 bg-[url('/bg-shape.png')] bg-cover bg-no-repeat">
       {/* Header Section */}
       <div className="text-center space-y-3 mb-12">
         <h3 className="text-lg font-semibold text-gray-700">Retour clients</h3>
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h1 className="text-xl md:text-lg font-bold text-gray-900 ">
         Nous avons plus de 1250 clients mondiaux qui nous disent qu&apos;ils sont satisfaits
         </h1>
       </div>

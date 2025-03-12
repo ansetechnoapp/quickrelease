@@ -56,7 +56,7 @@ const ArticleCard = memo(({ article, index }: ArticleCardProps) => {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="group h-full w-full md:w-[410px] p-4"
+      className="group h-full max-w-[410px] md:max-w-[350px] p-4"
     >
       <div className="w-full">
         <div className="relative w-full h-[300px] overflow-hidden rounded-lg">
@@ -142,7 +142,7 @@ export function Info() {
         </motion.button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {articles.map((article, index) => (
           <ArticleCard key={article.id} article={article} index={index} />
         ))}
