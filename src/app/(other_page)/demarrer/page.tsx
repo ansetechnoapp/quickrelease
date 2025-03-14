@@ -211,13 +211,19 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
                   Numéro IMEI
                 </label>
                 <input
-                  {...register("imei", {
-                    required: "L'IMEI est requis",
-                    pattern: {
-                      value: /^\d{5}$/,
-                      message: "L'IMEI doit contenir 15 chiffres"
-                    }
-                  })}
+                  {
+                    ...register("imei", {
+                      required: "L'IMEI est requis",
+                      pattern: {
+                        value: /\b([5-9]|[1-9]\d+)\b/,
+                        message: "L'IMEI doit contenir 15 chiffres"
+                      },
+                      min: {
+                        value: 5,
+                        message: "L'IMEI doit être supérieur ou égal à 5"
+                      }
+                    })
+                  }
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="Enter 15-digit IMEI number"
                 />

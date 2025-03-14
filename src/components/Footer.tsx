@@ -257,7 +257,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col ml-2">
                     <h1 className="font-bold text-white">Email:</h1>
-                    <h6>contact@deblocagerapide.com</h6>
+                    <h6>contact@deblocage-device.com</h6>
                   </div>
                 </div>
               </div>

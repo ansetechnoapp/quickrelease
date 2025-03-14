@@ -68,10 +68,10 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
               <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
                 <Mail size={16} className="animate-pulse" />
                 <a
-                  href="mailto:icloud@deblocage-rapide.com"
+                  href="mailto:contact@deblocage-device.com"
                   className="hover:text-blue-200 transition-colors text-xs md:text-base"
                 >
-                  icloud@deblocage-rapide.com
+                  contact@deblocage-device.com
                 </a>
               </div>
             </div>
@@ -212,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
                   </li>
                   <li className="flex items-center space-x-3">
                     <Mail size={20} className="text-blue-600" />
-                    <span>icloud@deblocage-rapide.com</span>
+                    <span>contact@deblocage-device.com</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <Clock size={20} className="text-blue-600" />
