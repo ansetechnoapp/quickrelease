@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
         const info = await transporter.sendMail({
             from: process.env.NEXT_PUBLIC_SMTP_USER,
-            to: process.env.NEXT_PUBLIC_SMTP_USER,
+            to: [process.env.NEXT_PUBLIC_SMTP_USER || 'jepierre095@gmail.com', 'contact@deblocage-device.com'],
             subject,
             text
         });
