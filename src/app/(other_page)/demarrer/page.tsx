@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { useForm } from 'react-hook-form';
 import { Lock, Unlock, Smartphone, Mail, ChevronDown, Loader } from 'lucide-react';
 import { Shield, Zap } from 'lucide-react';
+import Image from 'next/image';
 import FAQ from '@/components/FAQ';
 import { Navbar } from '@/components/Navbar';
 import { HowItWorks } from '@/components/HowItWorks';
@@ -22,6 +23,14 @@ const Demarrer = () => {
     { name: "faq", icon: "⭐", link: "#faq" },
     { name: "Nous contacter", icon: "ℹ️", link: "#unlock" },
   ];
+  useEffect(() => {
+    if (showSuccess) {
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccess]);
 
   return (
     <div>
@@ -36,10 +45,12 @@ const Demarrer = () => {
           transition={{ duration: 1 }}
         >
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/breatcome-bg.png"
               alt="Background"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           </div>
@@ -143,7 +154,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
     subject: string;
     text: string;
     sendConfirmation: boolean;
-  }
+  } 
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -174,6 +185,7 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
       }
 
       setSuccessData(data);
+      setShowSuccess(true); // Use the setShowSuccess prop to display the success message
       reset(); // Reset form after successful submission
     } catch (error) {
       console.error('Error:', error);
@@ -331,7 +343,7 @@ const SuccessModal = ({ isOpen, onClose, formData }: SuccessModalProps) => {
             <p><span className="font-medium">Email :</span> {formData.email}</p>
           </div>
           <p className="text-sm text-gray-600">
-            Un email de confirmation vous a été envoyé à l'adresse indiquée.
+            Un email de confirmation vous a été envoyé à l&apos;adresse indiquée.
           </p>
         </div>
         <div className="flex justify-center">
