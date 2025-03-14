@@ -25,7 +25,7 @@ export function Footer() {
   const handleImeiSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (imei.length >= 5) {
-      router.push(`/demarrer?imei=${imei}`);
+      router.push(`/demarrer?imei=${imei}#unlock`);
     }else{
       alert('Veuillez fournir un IMEI valide');
     }

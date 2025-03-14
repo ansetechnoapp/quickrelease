@@ -9,7 +9,7 @@ import FAQ from '@/components/FAQ';
 import { Navbar } from '@/components/Navbar';
 
 const Demarrer = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const { ref: heroRef, inView: heroInView } = useInView();
   const { ref: formRef, inView: formInView } = useInView({ threshold: 0.2 });
@@ -29,7 +29,7 @@ const Demarrer = () => {
         {/* Hero Section */}
         <motion.div
           ref={heroRef}
-          className="relative h-screen flex items-center justify-center overflow-hidden"
+          className="relative h-screen flex items-center justify-center overflow-hidden "
           initial={{ opacity: 0 }}
           animate={{ opacity: heroInView ? 1 : 0 }}
           transition={{ duration: 1 }}
@@ -97,7 +97,7 @@ const Demarrer = () => {
         )}
 
         {/* FAQ Section */}
-        <FAQ ref={faqRef}  />
+        <FAQ ref={faqRef} />
       </div>
     </div>
 
@@ -113,14 +113,18 @@ interface UnlockFormProps {
 
 const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>();
+  const [isUrgent, setIsUrgent] = useState(false);
 
   useEffect(() => {
-    // Get IMEI from URL parameters
+    // Get IMEI and urgent from URL parameters
     const params = new URLSearchParams(window.location.search);
     const imeiParam = params.get('imei');
+    const urgentParam = params.get('urgent');
+
     if (imeiParam) {
       setValue('imei', imeiParam);
     }
+    setIsUrgent(urgentParam === 'true');
   }, [setValue]);
 
   interface FormData {
@@ -140,8 +144,8 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
     try {
       const emailData: EmailData = {
         to: data.email,
-        subject: `Unlock Request for ${data.deviceModel}`,
-        text: `Modèle d'appareil: ${data.deviceModel}\nIMEI: ${data.imei}\nEmail: ${data.email}`,
+        subject: `${isUrgent ? '[URGENT] ' : ''}Unlock Request for ${data.deviceModel}`,
+        text: `${isUrgent ? 'DEMANDE URGENTE\n' : ''}Modèle d'appareil: ${data.deviceModel}\nIMEI: ${data.imei}\nEmail: ${data.email}`,
       };
 
       const response = await fetch('/api/sendEmail', {
@@ -163,13 +167,12 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
   return (
     <motion.section
       ref={ref}
-      id="unlock"
-      className="px-4"
+      className="px-4 h-screen"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="mx-auto flex flex-col md:flex-row gap-12 justify-between py-20 px-6 ">
+      <div className="mx-auto flex flex-col md:flex-row gap-12 justify-between py-20 px- ">
         {/* About Section */}
         <div className="w-full md:w-1/2">
           <AboutSection />
@@ -177,11 +180,11 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
 
         {/* Unlock Form */}
         <div className="w-full md:w-1/2">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
+          <div  id="unlock" className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
               Débloquer Votre Appareil
             </h2>
-
+            {isUrgent && <p className="text-red-500 text-center mb-4">DEMANDE URGENTE</p>}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">

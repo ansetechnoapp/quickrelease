@@ -65,9 +65,9 @@ export function Garanti() {
         hidden: { opacity: 1 }, // Opacité à 1 pour éviter l'animation sur mobile
         visible: { opacity: 1, transition: { duration: 1.5, ease: "easeOut" } },
       }}
-      className="w-full py-16 px-4 md:px-12"
+      className="w-full py-16 px-4 md:px-12" 
     >
-      <div className="max-w-7xl mx-auto">
+      <div id="garanti" className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h3 className="text-[#09415E] text-lg font-medium mb-2">
             Processus simplifié

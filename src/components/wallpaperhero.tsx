@@ -15,29 +15,33 @@ interface Slide {
   description: string;
   buttonText: string;
   url: string;
+  href1: string;
 }
 
 const slides: Slide[] = [
-  { 
-    title: "Débloquer iCloud", 
-    subtitle: "iPhone, iPad et iPod", 
+  {
+    title: "Débloquer iCloud",
+    subtitle: "iPhone, iPad et iPod",
     description: "Service 100% fiable avec garantie de remboursement. Retrouvez l'accès à votre appareil en toute sécurité.",
-    buttonText: "Débloquer maintenant", 
-    url: '/slider-bg.png' 
+    buttonText: "Débloquer maintenant",
+    url: '/slider-bg.png',
+    href1: '/demarrer#unlock',
   },
-  { 
-    title: "Rapide et Efficace", 
-    subtitle: "Code en moins d'une heure", 
+  {
+    title: "Rapide et Efficace",
+    subtitle: "Code en moins d'une heure",
     description: "Notre service express vous garantit un code de déblocage en moins de 60 minutes pour tous vos appareils Apple.",
-    buttonText: "Service Express", 
-    url: '/slider-bg2.png' 
+    buttonText: "Service Express",
+    url: '/slider-bg2.png',
+    href1: '/demarrer?urgent=true#unlock',
   },
-  { 
-    title: "Sécurité Garantie", 
-    subtitle: "Service Professionnel", 
+  {
+    title: "Sécurité Garantie",
+    subtitle: "Service Professionnel",
     description: "Protection des données et confidentialité assurée. Nous respectons votre vie privée à chaque étape du processus.",
-    buttonText: "Voir nos garanties", 
-    url: '/slider-bg3.png' 
+    buttonText: "Voir nos garanties",
+    url: '/slider-bg3.png',
+    href1: '#garanti',
   },
 ];
 
@@ -52,13 +56,13 @@ const WallpaperHero = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkMobile();
-    
+
     // Add event listener for resize
     window.addEventListener('resize', checkMobile);
-    
+
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -75,7 +79,7 @@ const WallpaperHero = () => {
       {/* Left side - Content */}
       <div className="absolute top-0 left-0 w-full md:w-1/2 h-full z-10 flex items-center justify-center px-8 md:px-16">
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={activeIndex}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,15 +98,17 @@ const WallpaperHero = () => {
                 {slides[activeIndex].description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center"
-                >
+                  onClick={() => window.location.href = slides[activeIndex].href1}>
+
                   {slides[activeIndex].buttonText}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
+
                 </button>
-                <button 
+                <button
                   className="px-6 py-3 bg-transparent border border-gray-400 text-white font-semibold rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300"
                 >
                   En savoir plus
@@ -118,9 +124,8 @@ const WallpaperHero = () => {
             <button
               key={index}
               onClick={() => setActiveIndex(index)}
-              className={`w-12 h-1 rounded-full transition-all duration-300 ${
-                index === activeIndex ? 'bg-blue-600 w-20' : 'bg-gray-500'
-              }`}
+              className={`w-12 h-1 rounded-full transition-all duration-300 ${index === activeIndex ? 'bg-blue-600 w-20' : 'bg-gray-500'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -134,7 +139,7 @@ const WallpaperHero = () => {
           effect={isMobile ? undefined : "fade"} // Disable fade effect on mobile for better swiping
           autoplay={isAutoplayPaused ? false : { delay: 6000, disableOnInteraction: false }}
           loop={true}
-          pagination={{ 
+          pagination={{
             clickable: true,
             el: '.custom-pagination',
             type: 'bullets',
@@ -165,15 +170,15 @@ const WallpaperHero = () => {
             <SwiperSlide key={index} className="touch-manipulation">
               <div
                 className="w-full h-full bg-cover bg-center touch-manipulation"
-                style={{ 
+                style={{
                   backgroundImage: `url(${slide.url})`,
                   clipPath: isMobile ? undefined : 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)'
                 }}
                 role="img"
                 aria-label={slide.title}
               />
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent touch-manipulation" 
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent touch-manipulation"
                 style={{ zIndex: 5 }}
               />
             </SwiperSlide>
@@ -195,7 +200,7 @@ const WallpaperHero = () => {
 
         {/* Controls */}
         <div className="absolute bottom-8 right-8 z-20 flex items-center gap-4">
-          <button 
+          <button
             onClick={() => setIsAutoplayPaused(!isAutoplayPaused)}
             className="w-10 h-10 bg-white bg-opacity-20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition"
             aria-label={isAutoplayPaused ? "Resume slideshow" : "Pause slideshow"}
