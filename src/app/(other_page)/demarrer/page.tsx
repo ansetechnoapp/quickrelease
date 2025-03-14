@@ -7,6 +7,7 @@ import { Lock, Unlock, Smartphone, Mail, ChevronDown, Loader } from 'lucide-reac
 import { Shield, Zap } from 'lucide-react';
 import FAQ from '@/components/FAQ';
 import { Navbar } from '@/components/Navbar';
+import { HowItWorks } from '@/components/HowItWorks';
 
 const Demarrer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -95,6 +96,9 @@ const Demarrer = () => {
             </div>
           </motion.div>
         )}
+
+<HowItWorks />
+
 
         {/* FAQ Section */}
         <FAQ ref={faqRef} />

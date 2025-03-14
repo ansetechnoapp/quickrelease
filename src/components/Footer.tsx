@@ -16,7 +16,7 @@ export function Footer() {
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
+      controls.start("visible"); 
     } else {
       controls.start("hidden");
     }
@@ -125,14 +125,14 @@ export function Footer() {
               <h3 className="text-lg font-bold mb-4 break-words">Déblocage Rapide</h3>
               <ul className="space-y-5">
                 {[
-                  "Accueil",
-                  "À Propos",
-                  "Comment ça marche ?",
-                  "Témoignages",
-                ].map((item) => (
-                  <li key={item}>
+                  { name: "Accueil", href: "/" },
+                  { name: "À Propos", href: "#about" },
+                  { name: "Comment ça marche ?", href: "/demarrer#how-it-works" },
+                  { name: "Témoignages", href: "#feedback" },
+                ].map((item, index) => (
+                  <li key={index}>
                     <a
-                      href="#"
+                      href={item.href}
                       className="flex flex-wrap items-center text-gray-400 hover:text-yellow-500 text-sm md:text-base"
                     >
                       <svg
@@ -150,7 +150,7 @@ export function Footer() {
                       >
                         <path d="m9 18 6-6-6-6" />
                       </svg>
-                      <span className="break-words">{item}</span>
+                      <span className="break-words">{item.name}</span>
                     </a>
                   </li>
                 ))}
