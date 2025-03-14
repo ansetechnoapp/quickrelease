@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useForm } from 'react-hook-form';
@@ -112,7 +112,16 @@ interface UnlockFormProps {
 }
 
 const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>();
+
+  useEffect(() => {
+    // Get IMEI from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const imeiParam = params.get('imei');
+    if (imeiParam) {
+      setValue('imei', imeiParam);
+    }
+  }, [setValue]);
 
   interface FormData {
     deviceModel: string;
@@ -198,7 +207,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
                   {...register("imei", {
                     required: "L'IMEI est requis",
                     pattern: {
-                      value: /^\d{15}$/,
+                      value: /^\d{5}$/,
                       message: "L'IMEI doit contenir 15 chiffres"
                     }
                   })}

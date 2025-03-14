@@ -9,24 +9,27 @@ import { memo } from "react";
 const articles = [
   {
     id: 1,
-    title: "Connaître l'évolution de l'iPhone d'Apple depuis sa création",
+    title: "Que vous souhaitiez une batterie qui dure plusieurs jours ou la meilleure offre, nous vous conseillons pour votre prochain iPhone.",
     date: "15",
     month: "JAN",
-    image: "/iphone1.jpg",
+    image: "/247288_iPhone_Buying_Guides_2_CVirginia.webp",
+    href:`https://www.theverge.com/23618862/best-iphone-camera-battery-screen-guide?utm_source=chatgpt.com`,
   },
   {
     id: 2,
-    title: "Les avancées technologiques des smartphones en 2024",
+    title: "L’iPhone 13 reconditionné est à saisir de toute urgence à moins de 360 euros sur Cdiscount",
     date: "20",
     month: "FEB",
-    image: "/iphone2.jpg",
+    image: "/MjAyNTAxZmU5YWM5YzJjZTgwZjdjY2VlMTc5ZGViMmQ1MDU5ZWM.jpg",
+    href:`https://www.ouest-france.fr/shopping/high-tech/smartphone/liphone-13-reconditionne-est-a-saisir-de-toute-urgence-a-moins-de-360-euros-sur-cdiscount-8f1bfc70-cf63-11ef-8aa9-6a8073542db7`,
   },
   {
     id: 3,
-    title: "L'impact de l'iPhone sur le marché mondial",
+    title: "Meilleures offres iPhone mars 2025 FR : Acheter des modèles d'iPhone 16, y compris l'iPhone 16e",
     date: "10",
     month: "MAR",
-    image: "/iphone3.jpg",
+    image: "/RW-COMP-Best-iPhone-deals.webp", 
+    href:`https://www.thesun.co.uk/shopping/25328176/best-iphone-deals/?utm_source=chatgpt.com`,
   },
 ];
 
@@ -37,6 +40,7 @@ interface Article {
   date: string;
   month: string;
   image: string;
+  href: string; // Added href property
 }
 
 interface ArticleCardProps {
@@ -79,7 +83,7 @@ const ArticleCard = memo(({ article, index }: ArticleCardProps) => {
 
         <div className="bg-gray-300 hover:bg-white w-full h-auto min-h-[277px] p-6 shadow-md transition-colors duration-300 rounded-lg mt-4">
           <h3 className="font-bold text-[#09415E] text-xl text-left leading-[26px]">
-            <a href="#" className="hover:text-yellow-500 transition-colors duration-300">
+            <a href={article.href} className="hover:text-yellow-500 transition-colors duration-300" target="_blank">
               {article.title}
             </a>
           </h3>
@@ -93,7 +97,7 @@ const ArticleCard = memo(({ article, index }: ArticleCardProps) => {
             whileHover={{ x: 10 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <a href="#" className="flex items-center space-x-2 group">
+            <a href={article.href} className="flex items-center space-x-2 group" target="_blank">
               <span className="font-medium group-hover:text-yellow-500 transition-colors duration-300">
                 Lire plus
               </span>
@@ -132,6 +136,7 @@ export function Info() {
             L&apos;actualité de nos partenaires
           </h1>
         </div>
+        <a href="https://www.openboxmobile.com/fr/connaitre-levolution-de-liphone-dapple-depuis-sa-creation_331.html?idb=32" target="_blank">
         <motion.button 
           className="hidden md:block bg-yellow-500 text-white px-8 py-3 rounded-full"
           whileHover={{ backgroundColor: "#072E45", scale: 1.05 }}
@@ -140,6 +145,7 @@ export function Info() {
         >
           Plus d&apos;articles
         </motion.button>
+        </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">

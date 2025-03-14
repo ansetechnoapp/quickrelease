@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/navigation";
 
 export function Footer() {
+  const router = useRouter();
+  const [imei, setImei] = useState("");
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -18,6 +21,15 @@ export function Footer() {
       controls.start("hidden");
     }
   }, [inView, controls]);
+
+  const handleImeiSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (imei.length >= 5) {
+      router.push(`/demarrer?imei=${imei}`);
+    }else{
+      alert('Veuillez fournir un IMEI valide');
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -74,10 +86,14 @@ export function Footer() {
               <input
                 type="text"
                 placeholder="Numero IMEI"
+                value={imei}
+                onChange={(e) => setImei(e.target.value)}
                 className="h-12 md:h-[56px] w-full md:w-[316px] border border-gray-300 px-4 py-2 text-black rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#00197D]"
                 required
               />
-              <button className="h-12 md:h-[56px] w-full md:w-[126px] bg-[#00197D] text-white px-4 py-2 rounded-r-lg hover:bg-[#00155e] transition-colors">
+              <button 
+                onClick={handleImeiSubmit}
+                className="h-12 md:h-[56px] w-full md:w-[126px] bg-[#00197D] text-white px-4 py-2 rounded-r-lg hover:bg-[#00155e] transition-colors">
                 Débloquer
               </button>
             </div>
