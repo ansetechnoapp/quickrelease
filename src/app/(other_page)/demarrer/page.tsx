@@ -158,11 +158,15 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
         body: JSON.stringify(emailData),
       });
 
-      if (!response.ok) throw new Error('Failed to send email');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to send email');
+      }
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.error('Error:', error);
+      alert('Failed to send email. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
