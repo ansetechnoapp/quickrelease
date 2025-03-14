@@ -97,7 +97,7 @@ const Demarrer = () => {
           </motion.div>
         )}
 
-<HowItWorks />
+        <HowItWorks />
 
 
         {/* FAQ Section */}
@@ -116,8 +116,9 @@ interface UnlockFormProps {
 }
 
 const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<FormData>();
   const [isUrgent, setIsUrgent] = useState(false);
+  const [successData, setSuccessData] = useState<FormData | null>(null);
 
   useEffect(() => {
     // Get IMEI and urgent from URL parameters
@@ -141,6 +142,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
     to: string;
     subject: string;
     text: string;
+    sendConfirmation: boolean;
   }
 
   const onSubmit = async (data: FormData) => {
@@ -148,8 +150,16 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
     try {
       const emailData: EmailData = {
         to: data.email,
-        subject: `${isUrgent ? '[URGENT] ' : ''}Unlock Request for ${data.deviceModel}`,
-        text: `${isUrgent ? 'DEMANDE URGENTE\n' : ''}Modèle d'appareil: ${data.deviceModel}\nIMEI: ${data.imei}\nEmail: ${data.email}`,
+        subject: `${isUrgent ? '[URGENT] ' : ''}Demande de déblocage - ${data.deviceModel}`,
+        text: `
+Détails de la demande:
+-------------------
+Modèle d'appareil: ${data.deviceModel}
+IMEI: ${data.imei}
+Email: ${data.email}
+${isUrgent ? 'DEMANDE URGENTE' : ''}
+        `.trim(),
+        sendConfirmation: true
       };
 
       const response = await fetch('/api/sendEmail', {
@@ -159,14 +169,15 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to send email');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send email');
       }
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 5000);
+
+      setSuccessData(data);
+      reset(); // Reset form after successful submission
     } catch (error) {
       console.error('Error:', error);
-      alert('Failed to send email. Please try again.');
+      alert(error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
     }
@@ -188,7 +199,7 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
 
         {/* Unlock Form */}
         <div className="w-full md:w-1/2">
-          <div  id="unlock" className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
+          <div id="unlock" className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
               Débloquer Votre Appareil
             </h2>
@@ -216,17 +227,17 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
                 </label>
                 <input
                   {
-                    ...register("imei", {
-                      required: "L'IMEI est requis",
-                      pattern: {
-                        value: /\b([5-9]|[1-9]\d+)\b/,
-                        message: "L'IMEI doit contenir 15 chiffres"
-                      },
-                      min: {
-                        value: 5,
-                        message: "L'IMEI doit être supérieur ou égal à 5"
-                      }
-                    })
+                  ...register("imei", {
+                    required: "L'IMEI est requis",
+                    pattern: {
+                      value: /\b([5-9]|[1-9]\d+)\b/,
+                      message: "L'IMEI doit contenir 15 chiffres"
+                    },
+                    min: {
+                      value: 5,
+                      message: "L'IMEI doit être supérieur ou égal à 5"
+                    }
+                  })
                   }
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="Enter 15-digit IMEI number"
@@ -278,12 +289,63 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
           </div>
         </div>
       </div>
+      <SuccessModal
+        isOpen={!!successData}
+        onClose={() => setSuccessData(null)}
+        formData={successData!}
+      />
     </motion.section>
 
   );
 });
 
+interface SuccessModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  formData: {
+    deviceModel: string;
+    imei: string;
+    email: string;
+  };
+}
 
+const SuccessModal = ({ isOpen, onClose, formData }: SuccessModalProps) => {
+  if (!isOpen || !formData) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+    >
+      <div className="bg-white rounded-xl p-8 max-w-lg w-full mx-4">
+        <h2 className="text-2xl font-bold text-center text-green-600 mb-6">
+          Demande envoyée avec succès !
+        </h2>
+        <div className="space-y-4 mb-6">
+          <h3 className="text-lg font-semibold mb-2">Récapitulatif :</h3>
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p><span className="font-medium">Modèle :</span> {formData.deviceModel}</p>
+            <p><span className="font-medium">IMEI :</span> {formData.imei}</p>
+            <p><span className="font-medium">Email :</span> {formData.email}</p>
+          </div>
+          <p className="text-sm text-gray-600">
+            Un email de confirmation vous a été envoyé à l'adresse indiquée.
+          </p>
+        </div>
+        <div className="flex justify-center">
+          <button
+            onClick={onClose}
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+          >
+            Faire une nouvelle demande
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default Demarrer;
 
