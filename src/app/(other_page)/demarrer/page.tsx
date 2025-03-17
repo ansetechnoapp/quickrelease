@@ -34,7 +34,7 @@ const Demarrer = () => {
 
   return (
     <div>
-      <Navbar navItems={navItems} />
+      <Navbar navItems={navItems} /> 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
         <motion.div
@@ -84,7 +84,8 @@ const Demarrer = () => {
        
 <AboutSection /> */}
         {/* Unlock Form Section */}
-        <UnlockForm
+        <div className="md:px-32">
+          <UnlockForm
           ref={formRef}
           inView={formInView}
           isSubmitting={isSubmitting}
@@ -109,6 +110,8 @@ const Demarrer = () => {
         )}
 
         <HowItWorks />
+        </div>
+        
 
 
         {/* FAQ Section */}
@@ -198,12 +201,12 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
   return (
     <motion.section
       ref={ref}
-      className="px-4 h-screen"
+      className="px-4 mb-60 md:mb-20 h-screen"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="mx-auto flex flex-col md:flex-row gap-12 justify-between py-20 px- ">
+      <div className="mx-auto mb-20 flex flex-col md:flex-row gap-12 justify-between py-20 px- ">
         {/* About Section */}
         <div className="w-full md:w-1/2">
           <AboutSection />

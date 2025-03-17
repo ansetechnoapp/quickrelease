@@ -1,12 +1,13 @@
 "use client";
+
 import Link from "next/link";
-import { MapPin } from "lucide-react"; // Importer l'icône MapPin
-import React, { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, Clock } from "lucide-react";
-// import Button from "./ui/Button";
+import React, { useState, useEffect, useCallback } from "react";
+import { Menu, Phone, Mail, Clock, X, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
+import { MobileNav } from "./MobileNav";
 
+// Define types
 interface NavItem {
   name: string;
   icon: string;
@@ -18,19 +19,41 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("");
 
+  // Handle scroll events with useCallback for performance
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 0);
+    // Close mobile menu on scroll
+    if (isMenuOpen) setIsMenuOpen(false);
+  }, [isMenuOpen]);
+
+  // Toggle mobile menu
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
+
+  // Close mobile menu
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  // Handle item hover
+  const handleItemHover = useCallback((itemName: string) => {
+    setActiveItem(itemName);
+  }, []);
+
+  const handleItemLeave = useCallback(() => {
+    setActiveItem("");
+  }, []);
+
+  // Scroll event listener
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-      // Close mobile menu on scroll
-      if (isMenuOpen) setIsMenuOpen(false);
-    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMenuOpen]);
+  }, [handleScroll]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -44,14 +67,60 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     };
   }, [isMenuOpen]);
 
+  // Render navigation link or anchor based on link type
+  const renderNavLink = (item: NavItem) => {
+    const isHashLink = item.link.includes('#');
+    const linkClasses = `
+      group relative text-gray-600 hover:text-blue-600 
+      transition-colors duration-300 font-medium
+      ${activeItem === item.name ? "text-blue-600" : ""}
+    `;
+
+    const linkContent = (
+      <>
+        <span className="relative z-10">{item.name}</span>
+        <span
+          className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left
+          transition-transform duration-300 ${activeItem === item.name ? "scale-x-100" : "scale-x-0"}
+          group-hover:scale-x-100`}
+        />
+      </>
+    );
+
+    return isHashLink ? (
+      <a
+        key={item.name}
+        href={item.link}
+        className={linkClasses}
+        onMouseEnter={() => handleItemHover(item.name)}
+        onMouseLeave={handleItemLeave}
+        aria-current={activeItem === item.name ? "page" : undefined}
+      >
+        {linkContent}
+      </a>
+    ) : (
+      <Link
+        key={item.name}
+        href={item.link}
+        className={linkClasses}
+        onMouseEnter={() => handleItemHover(item.name)}
+        onMouseLeave={handleItemLeave}
+        aria-current={activeItem === item.name ? "page" : undefined}
+      >
+        {linkContent}
+      </Link>
+    );
+  };
+
 
 
   return (
     <div className="fixed w-full top-0 z-50">
       {/* Top Bar with slide-down animation */}
       <div
-        className={`bg-blue-600 text-white transform transition-all duration-300 ${isScrolled ? "h-0 opacity-0 hidden" : "h-auto opacity-100"
-          }`}
+        className={`bg-blue-600 text-white transform transition-all duration-300 
+          ${isScrolled ? "h-0 opacity-0 hidden" : "h-auto opacity-100"}`}
+        aria-hidden={isScrolled}
       >
         <div className="container mx-auto px-4 py-2">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -87,8 +156,8 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
 
       {/* Main Navbar */}
       <nav
-        className={`bg-white transition-all duration-500 ${isScrolled ? "shadow-lg" : "shadow-sm"
-          }`}
+        className={`bg-white transition-all duration-500 ${isScrolled ? "shadow-lg" : "shadow-sm"}`}
+        aria-label="Main navigation"
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -104,64 +173,26 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
 
             {/* Desktop Navigation with hover animations */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => {
-                const isHashLink = item.link.includes('#');
-
-                return isHashLink ? (
-                  <a
-                    href={item.link}
-                    className={`group relative text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium
-                     ${activeItem === item.name ? "text-blue-600" : ""}`}
-                    onMouseEnter={() => setActiveItem(item.name)}
-                    onMouseLeave={() => setActiveItem("")}>
-                    <span className="relative z-10">{item.name}</span>
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left
-                     transition-transform duration-300 ${activeItem === item.name ? "scale-x-100" : "scale-x-0"}
-                       group-hover:scale-x-100`}
-                    />
-                  </a>
-                ) : (
-                  <Link
-                    href={item.link}
-                    className={`group relative text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium
-                     ${activeItem === item.name ? "text-blue-600" : ""}`}
-                    onMouseEnter={() => setActiveItem(item.name)}
-                    onMouseLeave={() => setActiveItem("")}>
-                    <span className="relative z-10">{item.name}</span>
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left
-        transition-transform duration-300 ${activeItem === item.name ? "scale-x-100" : "scale-x-0"}
-        group-hover:scale-x-100`}
-                    />
-                  </Link>
-                );
-              })}
+              {navItems.map(renderNavLink)}
 
               <Button
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
                 className="bg-blue-600 text-white hover:bg-zinc-950 dark:bg-white"
               >
-                {" "}
                 <Link href="/demarrer">Débloquer mon iCloud</Link>
                 <FaArrowRight className="ml-2" />
               </Button>
             </div>
 
-            <div className="flex justify-between space-x-10 items-center mb-8 md:hidden z-50">
+            <div className="flex justify-between space-x-10 items-center md:hidden z-50">
 
               {/* Bouton pour ouvrir/fermer le menu */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="ml-16 p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
+                className="p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? (
-                  <X
-                    size={24}
-                    className="transform rotate-0 transition-transform duration-300"
-                  />
-                ) : (
+                {!isMenuOpen && (
                   <Menu
                     size={24}
                     className="transform rotate-180 transition-transform duration-300"
@@ -172,69 +203,13 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
-        <div
-          className={`ml-32  md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+        <div onClick={() => setIsMenuOpen(false)}
+          className={`fixed inset-0 bg-black/75 h-screen ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
         >
-          {/* Logo visible uniquement lorsque le menu est ouvert */}
-          <div className="mt-10 left-0 flex-shrink-0">
-            {isMenuOpen && (
-              <img
-                src="/footer-logo.png"
-                alt="Logo"
-                className="w-32 h-auto"
-              />
-            )}
-          </div>
-
-          <div className="flex flex-col h-full pt-20 pb-6 px-4">
-            {navItems.map((item, index) => (
-              <a
-                key={item.name}
-                href={`#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="flex items-center space-x-3 px-4 py-4 text-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300 transform hover:translate-x-2"
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="text-2xl">{item.icon}</span>
-                <span>{item.name}</span>
-              </a>
-            ))}
-
-            <div className="mt-5">
-              <h4 className="font-semibold p-2 text-xl">Contact Info</h4>
-              <div className="m-5">
-                <ul className="space-y-4">
-                  <li className="flex items-center space-x-3">
-                    <Phone size={20} className="text-blue-600" />
-                    <span>+33 7 56 90 40 53</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <Mail size={20} className="text-blue-600" />
-                    <span>contact@deblocage-device.com</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <Clock size={20} className="text-blue-600" />
-                    <span>Disponible 24/7</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <MapPin size={20} className="text-blue-600" />{" "}
-                    {/* Utiliser MapPin à la place de Location */}
-                    <span>123 Rue Exemple, Paris</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <Button onClick={() => setIsMenuOpen(false)}
-              className="bg-blue-600 text-white hover:bg-zinc-950 dark:bg-white">
-              {" "}
-              <Link href="/demarrer">Unlock My iCloud</Link>
-              <div>🔓</div>
-            </Button>
-          </div>
+          <MobileNav isMenuOpen={isMenuOpen} navItems={navItems} onClose={() => setIsMenuOpen(false)} />
         </div>
+
       </nav>
     </div>
   );

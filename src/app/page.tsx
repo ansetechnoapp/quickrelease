@@ -16,7 +16,7 @@ export default function Home() {
   ];
   return (
     <>
-      <Navbar navItems={navItems} />
+      <Navbar navItems={navItems} /> 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <Wallpaperhero />
         <div className="md:container mx-auto px-4 md:px-20">
