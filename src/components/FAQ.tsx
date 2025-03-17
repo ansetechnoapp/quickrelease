@@ -99,7 +99,7 @@ const FAQ = React.forwardRef<HTMLDivElement>(function FAQ(props, ref) {
                     className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20 space-x-2"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>contact@deblocage-device.com</span>
+                    <span>{process.env.NEXT_PUBLIC_EMAIL2}</span>
                   </Button>
                   <Button 
                     className="w-full bg-white text-blue-600 hover:bg-purple-50"

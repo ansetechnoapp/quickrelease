@@ -232,7 +232,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col ml-2">
                     <h1 className="font-bold text-white">Tél:</h1>
-                    <h6>+33 6 12 34 56 78</h6>
+                    <h6>{process.env.NEXT_PUBLIC_NUMBER}</h6>
                   </div>
                 </div>
                 <div className="text-gray-400 text-sm md:text-base flex flex-wrap items-center">
@@ -261,7 +261,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col ml-2">
                     <h1 className="font-bold text-white">Email:</h1>
-                    <h6>contact@deblocage-device.com</h6>
+                    <h6>{process.env.NEXT_PUBLIC_EMAIL2}</h6>
                   </div>
                 </div>
               </div>

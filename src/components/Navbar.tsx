@@ -129,19 +129,19 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
               <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
                 <Phone size={16} className="animate-pulse" />
                 <a
-                  href="tel:+33756904053"
+                  href={`tel:+${process.env.NEXT_PUBLIC_NUMBER}`}
                   className="hover:text-blue-200 transition-colors md:text-base text-xs"
                 >
-                  +33 7 56 90 40 53
+                  {process.env.NEXT_PUBLIC_NUMBER}
                 </a>
               </div>
               <div className="flex items-center space-x-2 hover:scale-105 transition-transform">
                 <Mail size={16} className="animate-pulse" />
                 <a
-                  href="mailto:contact@deblocage-device.com"
+                  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL2}`}
                   className="hover:text-blue-200 transition-colors text-xs md:text-base"
                 >
-                  contact@deblocage-device.com
+                  {process.env.NEXT_PUBLIC_EMAIL2}
                 </a>
               </div>
             </div>

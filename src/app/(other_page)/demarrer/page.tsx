@@ -130,9 +130,11 @@ interface UnlockFormProps {
 }
 
 const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
-  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, setValue, reset, watch } = useForm<FormData>();
   const [isUrgent, setIsUrgent] = useState(false);
   const [successData, setSuccessData] = useState<FormData | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [pendingFormData, setPendingFormData] = useState<FormData | null>(null);
 
   useEffect(() => {
     // Get IMEI and urgent from URL parameters
@@ -160,17 +162,24 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
   } 
 
   const onSubmit = async (data: FormData) => {
+    setPendingFormData(data);
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmSubmit = async () => {
+    if (!pendingFormData) return;
+    
     setIsSubmitting(true);
     try {
       const emailData: EmailData = {
-        to: data.email,
-        subject: `${isUrgent ? '[URGENT] ' : ''}Demande de déblocage - ${data.deviceModel}`,
+        to: pendingFormData.email,
+        subject: `${isUrgent ? '[URGENT] ' : ''}Demande de déblocage - ${pendingFormData.deviceModel}`,
         text: `
 Détails de la demande:
 -------------------
-Modèle d'appareil: ${data.deviceModel}
-IMEI: ${data.imei}
-Email: ${data.email}
+Modèle d'appareil: ${pendingFormData.deviceModel}
+IMEI: ${pendingFormData.imei}
+Email: ${pendingFormData.email}
 ${isUrgent ? 'DEMANDE URGENTE' : ''}
         `.trim(),
         sendConfirmation: true
@@ -187,9 +196,11 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
         throw new Error(errorData.message || 'Failed to send email');
       }
 
-      setSuccessData(data);
-      setShowSuccess(true); // Use the setShowSuccess prop to display the success message
-      reset(); // Reset form after successful submission
+      setSuccessData(pendingFormData);
+      setShowSuccess(true);
+      reset();
+      setShowConfirmation(false);
+      setPendingFormData(null);
     } catch (error) {
       console.error('Error:', error);
       alert(error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.');
@@ -304,13 +315,64 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
           </div>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirmation && pendingFormData && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+        >
+          <div className="bg-white rounded-xl p-8 max-w-lg w-full mx-4">
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+              Confirmer votre demande
+            </h2>
+            <div className="space-y-4 mb-6">
+              <h3 className="text-lg font-semibold mb-2">Veuillez vérifier vos informations :</h3>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p><span className="font-medium">Modèle :</span> {pendingFormData.deviceModel}</p>
+                <p><span className="font-medium">IMEI :</span> {pendingFormData.imei}</p>
+                <p><span className="font-medium">Email :</span> {pendingFormData.email}</p>
+              </div>
+              <p className="text-sm text-gray-600">
+                Veuillez vérifier si vos informations sont correctes avant de confirmer ?
+              </p>
+            </div>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => {
+                  setShowConfirmation(false);
+                  setPendingFormData(null);
+                }}
+                className="px-6 py-3 rounded-lg font-medium bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors"
+              >
+                Modifier
+              </button>
+              <button
+                onClick={handleConfirmSubmit}
+                disabled={isSubmitting}
+                className="px-6 py-3 rounded-lg font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <Loader className="w-4 h-4 animate-spin" />
+                    Envoi en cours...
+                  </span>
+                ) : (
+                  'Confirmer et envoyer'
+                )}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       <SuccessModal
         isOpen={!!successData}
         onClose={() => setSuccessData(null)}
         formData={successData!}
       />
     </motion.section>
-
   );
 });
 

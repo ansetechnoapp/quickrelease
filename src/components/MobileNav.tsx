@@ -137,11 +137,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <Phone size={20} className="text-blue-600" />
-                <a href="tel:+33756904053">+33 7 56 90 40 53</a>
+                <a href={`tel:+${process.env.NEXT_PUBLIC_NUMBER}`}>
+                  {process.env.NEXT_PUBLIC_NUMBER}
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={20} className="text-blue-600" />
-                <a href="mailto:contact@deblocage-device.com">contact@deblocage-device.com</a>
+                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL2}`}>
+                  {process.env.NEXT_PUBLIC_EMAIL2}
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Clock size={20} className="text-blue-600" />
