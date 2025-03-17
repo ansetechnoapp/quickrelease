@@ -3,6 +3,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 export function Hero() {
   const controls = useAnimation();
@@ -91,10 +92,13 @@ export function Hero() {
           }}
           className="grid place-items-center md:place-items-end"
         >
-          <img
+          <Image
             src="/iphone image handle.png"
             alt="Device unlocking illustration"
             className="w-full max-w-md md:max-w-lg"
+            width={600}
+            height={600}
+            priority
           />
         </motion.div>
       </div>

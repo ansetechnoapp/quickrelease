@@ -35,10 +35,13 @@ export function Footer() {
     <div className="flex flex-col">
       <footer className="relative text-white w-full py-8">
         {/* Image de fond */}
-        <img
+        <Image
           src="/footer-bg.png"
           alt="Icône d'abonnement"
           className="absolute bg-contain w-full h-full top-0 left-0"
+          width={1920}
+          height={1080}
+          priority
         />
 
         {/* Conteneur noir devant l'image */}

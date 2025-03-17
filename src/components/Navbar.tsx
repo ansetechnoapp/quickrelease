@@ -164,13 +164,13 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
           <div className="flex items-center justify-between h-16">
             {/* Animated Logo */}
             <div className="flex-shrink-0 transform hover:scale-105 transition-transform">
-              <a
+              <Link
                 href="/"
                 className=""
               >
                 <Image src="/footer-logo2.png" alt="Logo" className="w-auto transition-all duration-300 hover:scale-105 md:pl-24"
                 width={75} height={75}/>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation with hover animations */}

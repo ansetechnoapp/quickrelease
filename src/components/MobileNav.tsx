@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { X, Phone, Mail, Clock, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 interface NavItem {
   name: string;
@@ -103,10 +104,12 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       {/* Header with logo and close button */}
       <div className="flex items-center justify-between p-4 border-b border-gray-100">
         <div className="flex-shrink-0">
-          <img
+          <Image
             src="/footer-logo2.png"
             alt="Logo"
             className="h-10 w-auto transition-all duration-300 hover:scale-105"
+            width={40}
+            height={40}
           />
         </div>
 
