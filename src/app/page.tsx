@@ -9,7 +9,6 @@ import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
   const navItems = [
-    { name: "Accueil", icon: "🏠", link: "/" },
     { name: "A propos", icon: "ℹ️", link: "#about" },
     { name: "comment sa marche?", icon: "🔄", link: "#garanti" },
     { name: "Avis", icon: "⭐", link: "#feedback" },

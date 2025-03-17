@@ -6,6 +6,7 @@ import { Menu, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
 import { MobileNav } from "./MobileNav";
+import Image from "next/image";
 
 // Define types
 interface NavItem {
@@ -163,12 +164,13 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
           <div className="flex items-center justify-between h-16">
             {/* Animated Logo */}
             <div className="flex-shrink-0 transform hover:scale-105 transition-transform">
-              <span
-                className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent
-                hover:from-blue-500 hover:to-blue-300 transition-all duration-300"
+              <a
+                href="/"
+                className=""
               >
-                DébloquerMonICloud
-              </span>
+                <Image src="/footer-logo2.png" alt="Logo" className="w-auto transition-all duration-300 hover:scale-105 md:pl-24"
+                width={75} height={75}/>
+              </a>
             </div>
 
             {/* Desktop Navigation with hover animations */}

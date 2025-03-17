@@ -162,7 +162,8 @@ export function Footer() {
               <h3 className="text-lg font-bold mb-4 break-words">Blog</h3>
               <p className="text-gray-400 text-sm md:text-base break-words"></p>
               <a
-                href="#"
+                href="https://www.idownloadblog.com/"
+                target="_blank"
                 className="flex flex-wrap items-center text-gray-400 hover:text-yellow-500 text-sm md:text-base"
               >
                 <span className="break-words">Actualités</span>
