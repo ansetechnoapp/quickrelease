@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
-import { Menu, Phone, Mail, Clock, X, MapPin } from "lucide-react";
+import { Menu, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
 import { MobileNav } from "./MobileNav";
@@ -31,9 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   }, [isMenuOpen]);
 
   // Toggle mobile menu
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
-  }, []);
+  // const toggleMenu = useCallback(() => {
+  //   setIsMenuOpen(prev => !prev);
+  // }, []);
 
   // Close mobile menu
   const closeMenu = useCallback(() => {
