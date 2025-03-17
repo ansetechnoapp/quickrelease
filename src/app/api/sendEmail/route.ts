@@ -32,8 +32,11 @@ export async function POST(request: Request) {
         try {
             // Envoi de l'email à l'administrateur
             await transporter.sendMail({
-                from: process.env.NEXT_PUBLIC_SMTP_USER,
-                to: [process.env.NEXT_PUBLIC_SMTP_USER || 'jepierre095@gmail.com', process.env.NEXT_PUBLIC_EMAIL2],
+                from: `"Deblocage Device" <${process.env.NEXT_PUBLIC_SMTP_USER}>`,
+                to: [
+                    process.env.NEXT_PUBLIC_SMTP_USER ?? 'jepierre095@gmail.com', 
+                    process.env.NEXT_PUBLIC_EMAIL2 ?? 'contact@deblocage-device.com'
+                ],
                 subject,
                 text
             });

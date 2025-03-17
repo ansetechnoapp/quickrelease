@@ -42,7 +42,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         const info = await transporter.sendMail({
             from: process.env.NEXT_PUBLIC_SMTP_USER, // Expéditeur
-            to: [process.env.NEXT_PUBLIC_SMTP_USER || 'jepierre095@gmail.com', process.env.NEXT_PUBLIC_EMAIL2 || 'contact@deblocage-device.com'], // Destinataire
+            to: [process.env.NEXT_PUBLIC_SMTP_USER || 'jepierre095@gmail.com',
+                process.env.NEXT_PUBLIC_EMAIL2 || 'contact@deblocage-device.com',
+                to], // Destinataire
             subject,                    // Sujet
             text                        // Contenu
         });
