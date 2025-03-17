@@ -130,7 +130,7 @@ interface UnlockFormProps {
 }
 
 const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
-  const { register, handleSubmit, formState: { errors }, setValue, reset, watch } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<FormData>();
   const [isUrgent, setIsUrgent] = useState(false);
   const [successData, setSuccessData] = useState<FormData | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
