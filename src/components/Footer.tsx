@@ -57,9 +57,9 @@ export function Footer() {
             repeatType: "reverse",
             ease: "easeInOut",
           }}
-          className="z-[1] absolute top-0 left-0 w-full h-1/2 bg-[url('/footer-shape.jpg')] bg-cover bg-no-repeat opacity-50"
+          className="z-[1] absolute top-0 left-0 w-[90%] h-1/2 bg-[url('/footer-shape.jpg')] bg-cover bg-no-repeat opacity-50"
         />
-
+        {/* absolute top-0 left-0 w-full h-48 md:h-[245px] bg-[url('/footer-shape.jpg')] bg-cover bg-no-repeat opacity-50 */}
         {/* Subscription section with improved animation and styling */}
         <motion.div
           ref={ref}
