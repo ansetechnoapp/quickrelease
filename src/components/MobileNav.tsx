@@ -95,7 +95,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
   return (
     <div
-      className={`ml-28 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+      className={`z-[9999] ml-28 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       role="dialog"
       aria-modal="true"
@@ -124,14 +124,13 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       </div>
 
       {/* Menu content */}
-      <div className="flex flex-col h-full pt-6 pb-6 px-4 overflow-y-auto">
-        <nav className="space-y-1 mb-6">
+      <div className="flex flex-col h-full pt-4 pb-20 px-4 overflow-y-auto">
+        <nav className="space-y-1 mb-2">
           {navItems.map((item, index) => (
             <NavLink key={item.name} item={item} index={index} />
           ))}
         </nav>
 
-        <div className="mt-5">
           <h4 className="font-semibold p-2 text-xl">Contact Info</h4>
           <div className="m-5">
             <ul className="space-y-4">
@@ -157,7 +156,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               </li>
             </ul>
           </div>
-        </div>
 
         <Button
           onClick={onClose}

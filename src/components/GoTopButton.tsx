@@ -30,7 +30,7 @@ export default function GoTopButton() {
       }}
       transition={{ duration: 1, ease: "easeInOut" }}
       whileHover={{ scale: 1.1 }}
-      className="fixed bottom-6 right-6 bg-[#09415E] text-white p-3 rounded-full z-[9999] shadow-lg hover:bg-yellow-500 transition"
+      className="fixed bottom-6 right-6 bg-[#09415E] text-white p-3 rounded-full z-[9990] shadow-lg hover:bg-yellow-500 transition"
     >
       {/* Effet d'expansion du cercle */}
       <motion.div
