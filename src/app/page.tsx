@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { FAQ } from "@/components/FAQ";
 // import Features from "@/components/Features";
 import Hero from "@/components/Hero";
@@ -10,6 +10,7 @@ import { Garanti } from "@/components/Garanti";
 import { Navbar } from "@/components/Navbar";
 import {SectionWrapper} from "@/components/ui/SectionWrapper";
 import UnlockForm from '@/components/UnlockForm';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const navItems = [
@@ -21,7 +22,14 @@ export default function Home() {
   
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
-  
+    useEffect(() => {
+      if (showSuccess) {
+        const timer = setTimeout(() => {
+          setShowSuccess(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    }, [showSuccess]);
   return (
     <>
       <Navbar navItems={navItems} /> 
@@ -74,6 +82,20 @@ export default function Home() {
         </div>
         <FeedbackClient />
         <Info />
+        {/* Success Message */}
+        {showSuccess && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="fixed bottom-4 right-4 z-50"
+          >
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 shadow-lg">
+              <p className="text-green-800">
+                Votre demande a été envoyée avec succès!
+              </p>
+            </div>
+          </motion.div>
+        )}
       </div>
     </>
   );

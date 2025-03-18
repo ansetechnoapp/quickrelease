@@ -28,6 +28,18 @@ const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function Un
     setIsUrgent(urgentParam === 'true');
   }, [setValue]);
 
+  useEffect(() => {
+    if (showConfirmation) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showConfirmation]);
+
   interface FormData {
     deviceModel: string;
     imei: string;

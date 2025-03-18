@@ -77,7 +77,7 @@ const Demarrer = () => {
                   <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                 </motion.a>
               </motion.div>
-            </div>
+            </div> 
           </motion.div>
 
         {/* Unlock Form and About Section */}
