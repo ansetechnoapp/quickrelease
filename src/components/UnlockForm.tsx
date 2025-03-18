@@ -299,5 +299,3 @@ const SuccessModal = ({ isOpen, onClose, formData }: SuccessModalProps) => {
 };
 
 export default UnlockForm;
-
-

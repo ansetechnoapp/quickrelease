@@ -189,7 +189,7 @@ const WallpaperHero = () => {
         </Swiper>
 
         {/* Mobile swipe indicator - only visible on small screens */}
-        <div className="absolute bottom-24 right-0 left-0 flex justify-center md:hidden z-20 pointer-events-none">
+        {/* <div className="absolute bottom-24 right-0 left-0 flex justify-center md:hidden z-20 pointer-events-none">
           <div className="bg-white bg-opacity-20 backdrop-blur-md py-2 px-4 rounded-full text-white text-xs flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -199,7 +199,7 @@ const WallpaperHero = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
-        </div>
+        </div> */}
 
         {/* Controls */}
         <div className="absolute bottom-8 right-8 z-20 flex items-center gap-4">

@@ -18,9 +18,9 @@ const Demarrer = () => {
 
   const navItems = [
     { name: "Accueil", icon: "🏠", link: "/" },
-    { name: "A propos", icon: "ℹ️", link: "#unlock" },
+    { name: "A propos", icon: "ℹ️", link: "#how-it-works" },
     { name: "faq", icon: "⭐", link: "#faq" },
-    { name: "Nous contacter", icon: "ℹ️", link: "#unlock" },
+    { name: "Nous contacter", icon: "ℹ️", link: "#unlock" }, 
   ];
   useEffect(() => {
     if (showSuccess) {
