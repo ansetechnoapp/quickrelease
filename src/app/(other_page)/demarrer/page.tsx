@@ -14,7 +14,6 @@ const Demarrer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const { ref: heroRef, inView: heroInView } = useInView();
-  const { ref: formRef, inView: formInView } = useInView({ threshold: 0.2 });
   const { ref: faqRef } = useInView({ threshold: 0.2 });
 
   const navItems = [
@@ -86,8 +85,6 @@ const Demarrer = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               {/* Unlock Form */}
                 <UnlockForm
-                  ref={formRef}
-                  inView={formInView}
                   isSubmitting={isSubmitting}
                   setIsSubmitting={setIsSubmitting}
                   setShowSuccess={setShowSuccess}

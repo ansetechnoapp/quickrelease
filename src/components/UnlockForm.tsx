@@ -5,13 +5,12 @@ import { Loader, Lock, Mail, Smartphone, Unlock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export interface UnlockFormProps {
-  inView: boolean;
   isSubmitting: boolean;
   setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
   setShowSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ inView, isSubmitting, setIsSubmitting, setShowSuccess }, ref) {
+const UnlockForm = React.forwardRef<HTMLDivElement, UnlockFormProps>(function UnlockForm({ isSubmitting, setIsSubmitting, setShowSuccess }) {
   const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<FormData>();
   const [isUrgent, setIsUrgent] = useState(false);
   const [successData, setSuccessData] = useState<FormData | null>(null);
@@ -94,7 +93,6 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
   return (
     <div
       className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 "
-      ref={ref}
     >
         {/* About Section */}
         <div className="w-full lg:w-5/12 lg:px-4">
