@@ -68,7 +68,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       </div>
     );
 
-    const linkClassName = "flex items-center p-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200";
+    const linkClassName = "flex items-center pb-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200";
 
     return isHashLink ? (
       <a
@@ -95,7 +95,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
   return (
     <div
-      className={`z-[9999] ml-28 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+      className={`z-[9999] ml-16 md:hidden fixed inset-0 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       role="dialog"
       aria-modal="true"
@@ -159,7 +159,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
         <Button
           onClick={onClose}
-          className="bg-blue-600 text-white hover:bg-zinc-950 dark:bg-white"
+          className="bg-blue-600 text-white hover:bg-zinc-950 dark:bg-white mb-10"
         >
           <Link href="/demarrer">Débloquer mon iCloud</Link>
           <div className="ml-2">🔓</div>

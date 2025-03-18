@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AboutSectionUnlock } from './AboutSectionUnlock';
 import { Loader, Lock, Mail, Smartphone, Unlock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -91,17 +90,8 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
   };
 
   return (
-    <div
-      className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 "
-    >
-        {/* About Section */}
-        <div className="w-full lg:w-5/12 lg:px-4">
-          <AboutSectionUnlock />
-        </div>
-
-        {/* Unlock Form */}
-        <div className="w-full lg:w-7/12">
-          <div id="unlock" className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 w-full max-w-2xl mx-auto lg:mx-0">
+    <div className="w-full max-w-2xl mx-auto md:pt-36" id="unlock">
+      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 w-full">
             <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6 sm:mb-8">
               Débloquer Votre Appareil
             </h2>
@@ -186,8 +176,7 @@ ${isUrgent ? 'DEMANDE URGENTE' : ''}
                 )}
               </motion.button>
             </form>
-          </div>
-        </div>
+      </div>
 
       {/* Confirmation Modal */}
       {showConfirmation && pendingFormData && (

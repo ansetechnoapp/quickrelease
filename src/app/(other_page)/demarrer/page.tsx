@@ -81,7 +81,7 @@ const Demarrer = () => {
           </motion.div>
 
         {/* Unlock Form and About Section */}
-        <SectionWrapper className="bg-white/80 py-16 md:py-24">
+        <SectionWrapper className="bg-white/80 py-4 md:py-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               {/* Unlock Form */}
                 <UnlockForm
