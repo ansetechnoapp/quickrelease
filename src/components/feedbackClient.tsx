@@ -9,66 +9,66 @@ import "swiper/css/navigation";
 const FeedbackClient = () => {
   const section = [
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/2.png",
+      UrlProfil: "/anonymous/2.png",
       name: "Sophie Laurent",
-      activity: "Directrice Marketing",
+      deviceunluck: "iPhone 15 Pro",
       desc: "Un service exceptionnel ! J'ai pu déverrouiller mon iPhone en moins d'une heure. L'équipe est très professionnelle et le processus est sécurisé. Je recommande vivement !",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/1.jpg",
+      UrlProfil: "/anonymous/1.jpg",
       name: "Marc Dubois",
-      activity: "Entrepreneur",
+      deviceunluck: "iPad Pro 12.9-inch (2023)",
       desc: "En tant que propriétaire d'entreprise, j'apprécie particulièrement l'efficacité et la fiabilité de ce service. Mon Samsung a été débloqué rapidement et sans complication.",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/4.jpg",
+      UrlProfil: "/anonymous/4.jpg",
       name: "Emma Martin",
-      activity: "Consultante IT",
+      deviceunluck: "MacBook Pro 14-inch (2023) ",
       desc: "En tant que professionnelle de l'informatique, je suis impressionnée par la sécurité et l'efficacité du processus. Le support client est réactif et compétent.",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/3.png",
+      UrlProfil: "/anonymous/3.png",
       name: "Thomas Bernard",
-      activity: "Avocat",
+      deviceunluck: "iPad Air (2023)",
       desc: "Service très professionnel et fiable. J'ai pu récupérer l'accès à mon appareil rapidement. La confidentialité et la sécurité sont au rendez-vous.",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/2.png",
+      UrlProfil: "/anonymous/2.png",
       name: "Marie Dupont",
-      activity: "Médecin",
+      deviceunluck: "AirPods Pro 2nd Generation ",
       desc: "En tant que médecin, j'ai besoin d'un accès constant à mon téléphone. Ce service m'a permis de résoudre rapidement un problème critique. Très satisfaite !",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/5.png",
+      UrlProfil: "/anonymous/5.png",
       name: "Lucas Moreau",
-      activity: "Directeur Commercial",
+      deviceunluck: "Mac mini (M2) ",
       desc: "Service client exceptionnel et résultats rapides. J'ai pu déverrouiller mon appareil sans perdre de temps. Un service que je n'hésiterai pas à utiliser à nouveau si nécessaire.",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/4.jpg",
+      UrlProfil: "/anonymous/4.jpg",
       name: "Julie Petit",
-      activity: "Architecte",
+      deviceunluck: "iMac 24-inch (2023)",
       desc: "Processus simple et efficace. L'équipe est très professionnelle et le service est fiable. Je recommande sans hésitation !",
       rate: 5,
     },
     {
-      url: "/anonymous-avatar-icon-25.jpg",
-      UrlProfil: "/anonymous-avatar-icon-25.jpg",
+      url: "/anonymous/3.png",
+      UrlProfil: "/anonymous/3.png",
       name: "Pierre Durand",
-      activity: "Ingénieur",
+      deviceunluck: "HomePod mini",
       desc: "En tant qu'ingénieur, j'apprécie particulièrement la précision et l'efficacité du service. Mon appareil a été débloqué rapidement et de manière sécurisée.",
       rate: 5,
     }
@@ -140,7 +140,7 @@ const FeedbackClient = () => {
                         </div>
                         <div>
                           <p className="text-lg font-semibold text-gray-900">{client.name}</p>
-                          <span className="text-sm text-gray-600">{client.activity}</span>
+                          <span className="text-sm text-gray-600">device unlock : {client.deviceunluck}</span>
                         </div>
                       </div>
                       {/* Testimonial */}
