@@ -1,11 +1,29 @@
 import { seoConfig } from './seo';
 
+// Define common types
+interface Image {
+  '@type': 'ImageObject';
+  url: string;
+  width: number;
+  height: number;
+}
+
+// Define default images
+const defaultImage: Image = {
+  '@type': 'ImageObject',
+  url: `${seoConfig.baseUrl}/footer-logo2.png`,
+  width: 512,
+  height: 512,
+};
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${seoConfig.baseUrl}/#organization`,
   name: 'Déblocage Device',
   url: seoConfig.baseUrl,
-  logo: `${seoConfig.baseUrl}/footer-logo2.png`,
+  logo: defaultImage,
+  image: defaultImage,
   description: 'Service professionnel de déblocage iPhone iCloud. Rapide, sécurisé et garanti.',
   contactPoint: {
     '@type': 'ContactPoint',
@@ -13,76 +31,17 @@ export const organizationSchema = {
     availableLanguage: ['French'],
     areaServed: 'FR',
   },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'FR',
+    addressLocality: 'Paris',
+    addressRegion: 'Île-de-France',
+  },
   sameAs: [
-    // Add your social media URLs here
+    // Add your social media URLs here when available
     // 'https://www.facebook.com/deblocage-device',
     // 'https://twitter.com/deblocage_device',
   ],
-};
-
-export const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${seoConfig.baseUrl}/#business`,
-  name: 'Déblocage Device',
-  description: 'Service professionnel de déblocage iPhone iCloud. Rapide, sécurisé et garanti.',
-  url: seoConfig.baseUrl,
-  telephone: '+33-XXX-XXX-XXX', // Replace with actual phone number
-  priceRange: '€€',
-  openingHours: 'Mo-Su 00:00-23:59',
-  serviceArea: {
-    '@type': 'Country',
-    name: 'France',
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Services de déblocage',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Déblocage iPhone iCloud',
-          description: 'Service de déblocage iCloud pour iPhone, rapide et sécurisé',
-        },
-      },
-    ],
-  },
-};
-
-export const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Déblocage iPhone iCloud',
-  description: 'Service professionnel de déblocage iPhone iCloud. Rapide, sécurisé et garanti. Débloquez votre iPhone en moins de 24h.',
-  provider: {
-    '@type': 'Organization',
-    name: 'Déblocage Device',
-    url: seoConfig.baseUrl,
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'France',
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Services de déblocage iPhone',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Déblocage iCloud iPhone',
-          description: 'Déblocage rapide et sécurisé de votre iPhone bloqué par iCloud',
-        },
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'EUR',
-          price: 'Sur devis',
-        },
-      },
-    ],
-  },
 };
 
 export const websiteSchema = {
@@ -93,7 +52,7 @@ export const websiteSchema = {
   name: 'Déblocage Device',
   description: 'Service professionnel de déblocage iPhone iCloud',
   publisher: {
-    '@id': `${seoConfig.baseUrl}/#business`,
+    '@id': `${seoConfig.baseUrl}/#organization`,
   },
   potentialAction: [
     {
@@ -108,6 +67,40 @@ export const websiteSchema = {
   inLanguage: 'fr-FR',
 };
 
+export const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${seoConfig.baseUrl}/#business`,
+  name: 'Déblocage Device',
+  image: defaultImage,
+  url: seoConfig.baseUrl,
+  telephone: '', // Add when available
+  priceRange: '€€',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'FR',
+    addressLocality: 'Paris',
+    addressRegion: 'Île-de-France',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '', // Add when available
+    longitude: '', // Add when available
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+    ],
+    opens: '09:00',
+    closes: '18:00',
+  },
+};
+
 export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -118,6 +111,43 @@ export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) =>
     item: item.url,
   })),
 });
+
+export const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${seoConfig.baseUrl}/#service`,
+  name: 'Déblocage iPhone iCloud',
+  description: 'Service professionnel de déblocage iPhone iCloud. Rapide, sécurisé et garanti.',
+  provider: {
+    '@id': `${seoConfig.baseUrl}/#organization`,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Services de Déblocage iPhone',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Déblocage iCloud Standard',
+          description: 'Service de déblocage iCloud pour iPhone en 24-48h',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Déblocage iCloud Express',
+          description: 'Service de déblocage iCloud prioritaire en moins de 24h',
+        },
+      },
+    ],
+  },
+};
 
 export const faqSchema = (faqs: Array<{ question: string; answer: string }>) => ({
   '@context': 'https://schema.org',
