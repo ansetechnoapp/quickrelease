@@ -168,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
                 href="/"
                 className=""
               >
-                <Image src="/footer-logo2.png" alt="Logo" className="w-auto transition-all duration-300 hover:scale-105 md:pl-24"
+                <Image src="/footer-logo2.png" alt="Déblocage Device - Service professionnel de déblocage iPhone iCloud" className="w-auto transition-all duration-300 hover:scale-105 md:pl-24"
                 width={75} height={75}/>
               </Link>
             </div>

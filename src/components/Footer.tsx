@@ -38,7 +38,7 @@ export function Footer() {
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/footer-bg.png"
-            alt="Background"
+            alt="Arrière-plan du pied de page - Déblocage Device"
             className="object-cover w-full h-full"
             width={1920}
             height={1080}
@@ -83,7 +83,7 @@ export function Footer() {
               <div className="bg-white rounded-full w-[60px] h-[60px] md:w-[70px] md:h-[70px] flex justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-200">
                 <Image
                   src="/subscribe-icon.png"
-                  alt="Icône d'abonnement"
+                  alt="Icône newsletter - Restez informé des dernières actualités déblocage iPhone"
                   width={34}
                   height={34}
                   className="w-7 h-7 md:w-10 md:h-10"
@@ -128,7 +128,7 @@ export function Footer() {
               <div className="w-[150px] md:w-[188px] h-[40px] md:h-[50px] mx-auto md:mx-0">
                 <Image
                   src="/footer-logo.png"
-                  alt="Logo"
+                  alt="Logo Déblocage Device - Service professionnel de déblocage iPhone iCloud"
                   width={188}
                   height={50}
                   className="w-full h-auto"

@@ -51,15 +51,17 @@ export function Hero() {
           Des services de déverrouillage rapides, sécurisés et sans tracas pour tous vos appareils. Commencez dès maintenant et découvrez un processus fluide.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
-            // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          onClick={() => window.location.href = '/demarrer#unlock'}
+            <button
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+              onClick={() => window.location.href = '/demarrer#unlock'}
+              aria-label="Commencer le processus de déblocage iPhone"
             >
             Commencer
             </button>
             <button
               className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300 transition"
               onClick={() => setShowModal(true)}
+              aria-label="En savoir plus sur nos services de déblocage"
             >
               Apprendre encore plus
             </button>
@@ -94,7 +96,7 @@ export function Hero() {
         >
           <Image
             src="/iphone image handle.png"
-            alt="Device unlocking illustration"
+            alt="iPhone déblocage iCloud - Illustration du service de déblocage professionnel"
             className="w-full max-w-md md:max-w-lg"
             width={600}
             height={600}

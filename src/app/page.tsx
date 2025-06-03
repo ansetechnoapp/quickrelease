@@ -1,7 +1,5 @@
 'use client';
 import React, { useEffect } from 'react';
-// import { FAQ } from "@/components/FAQ";
-// import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Wallpaperhero from "@/components/wallpaperhero";
 import { Info } from "@/components/Info";
@@ -11,6 +9,8 @@ import { Navbar } from "@/components/Navbar";
 import {SectionWrapper} from "@/components/ui/SectionWrapper";
 import UnlockForm from '@/components/UnlockForm';
 import { motion } from 'framer-motion';
+import PageSEO from '@/components/SEO/PageSEO';
+import { serviceSchema, localBusinessSchema } from '@/lib/structured-data';
 
 export default function Home() {
   const navItems = [
@@ -32,8 +32,11 @@ export default function Home() {
     }, [showSuccess]);
   return (
     <>
-      <Navbar navItems={navItems} /> 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <PageSEO
+        structuredData={[serviceSchema, localBusinessSchema]}
+      />
+      <Navbar navItems={navItems} />
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <Wallpaperhero />
         <div className="md:container mx-auto px-4 md:px-20">
           <Hero />
@@ -96,7 +99,7 @@ export default function Home() {
             </div>
           </motion.div>
         )}
-      </div>
+      </main>
     </>
   );
 }

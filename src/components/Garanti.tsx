@@ -191,7 +191,7 @@ export function Garanti() {
                       <div className="absolute inset-0 bg-white/0 group-hover:bg-white/90 transition duration-300 rounded-xl" />
                       <Image
                         src={step.imageUrl}
-                        alt={`Step ${step.number}`}
+                        alt={`Étape ${step.number} - ${step.title} - Processus de déblocage iPhone`}
                         className={`w-full h-full relative z-10 ${isMobile ? 'brightness-0 invert' : 'group-hover:filter group-hover:brightness-0 group-hover:contrast-200'} transition-all duration-300`}
                         width={48}
                         height={48}

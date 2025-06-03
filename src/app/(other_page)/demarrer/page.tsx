@@ -9,6 +9,9 @@ import { Navbar } from '@/components/Navbar';
 import { HowItWorks } from '@/components/HowItWorks';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import UnlockForm from '@/components/UnlockForm';
+import PageSEO from '@/components/SEO/PageSEO';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/structured-data';
+
 
 const Demarrer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,10 +34,39 @@ const Demarrer = () => {
     }
   }, [showSuccess]);
 
+  // FAQ data for structured data
+  const faqData = [
+    {
+      question: "Combien de temps prend le déblocage ?",
+      answer: "Le déblocage de votre iPhone prend généralement moins de 24 heures une fois que nous avons reçu toutes les informations nécessaires."
+    },
+    {
+      question: "Le déblocage est-il permanent ?",
+      answer: "Oui, le déblocage que nous effectuons est permanent et ne sera pas annulé par les mises à jour iOS."
+    },
+    {
+      question: "Quels modèles d'iPhone sont supportés ?",
+      answer: "Nous supportons tous les modèles d'iPhone, de l'iPhone 5 aux derniers modèles iPhone 15."
+    }
+  ];
+
+  // Breadcrumb data
+  const breadcrumbData = [
+    { name: "Accueil", url: "/" },
+    { name: "Déblocage iPhone", url: "/demarrer" }
+  ];
+
   return (
     <div className="min-h-screen">
+      <PageSEO
+        structuredData={[
+          serviceSchema,
+          faqSchema(faqData),
+          breadcrumbSchema(breadcrumbData)
+        ]}
+      />
       <Navbar navItems={navItems} />
-      <div className="bg-gradient-to-b from-gray-50 to-white">
+      <main className="bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
           <motion.div
             ref={heroRef}
@@ -116,7 +148,7 @@ const Demarrer = () => {
             </div>
           </motion.div>
         )}
-      </div>
+      </main>
     </div>
   );
 };
