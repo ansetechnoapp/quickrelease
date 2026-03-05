@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install next@latest)",
+      "Bash(pnpm update next@latest)",
+      "Bash(rm -rf node_modules/.package-lock.json)",
+      "Bash(rm -rf node_modules)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(pnpm install)"
+    ]
+  }
+}
