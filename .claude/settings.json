@@ -8,7 +8,8 @@
       "Bash(echo \"exit: $?\")",
       "Bash(pnpm install)",
       "Bash(pnpm view next versions --json)",
-      "Bash(pnpm update next)"
+      "Bash(pnpm update next)",
+      "Bash(pnpm build)"
     ]
   }
 }
