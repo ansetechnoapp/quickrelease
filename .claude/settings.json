@@ -6,7 +6,8 @@
       "Bash(rm -rf node_modules/.package-lock.json)",
       "Bash(rm -rf node_modules)",
       "Bash(echo \"exit: $?\")",
-      "Bash(pnpm install)"
+      "Bash(pnpm install)",
+      "Bash(pnpm view next versions --json)"
     ]
   }
 }
