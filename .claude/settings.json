@@ -9,7 +9,12 @@
       "Bash(pnpm install)",
       "Bash(pnpm view next versions --json)",
       "Bash(pnpm update next)",
-      "Bash(pnpm build)"
+      "Bash(pnpm build)",
+      "Bash(grep -E \"\\\\.\\(ts|js|json\\)$|^d\")",
+      "Bash(curl -sI -L \"https://www.deblocage-device.com/\")",
+      "Bash(curl -s -L -X GET \"https://www.deblocage-device.com/\" -o /dev/null -w \"HTTP Code: %{http_code}\\\\nRedirect URL: %{redirect_url}\\\\nFinal URL: %{url_effective}\\\\n\")",
+      "Bash(curl -s \"https://www.deblocage-device.com/\")",
+      "Bash(curl -s \"https://www.deblocage-device.com/lander\")"
     ]
   }
 }
